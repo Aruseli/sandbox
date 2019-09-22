@@ -219,10 +219,6 @@ export const ScreenTwo = ({ ...props }) => {
                         width: '100%',
                         height: '100%',
                         color: 'rgba(19, 13, 19, 0.78)',
-                        margin: 'auto',
-                        background: '#fff',
-                        boxShadow: '1px 1px 0px 1px black',
-                        borderRadius: '50%',
                       }}
                     />
                   </div>

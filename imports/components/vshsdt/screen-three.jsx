@@ -1,14 +1,12 @@
-import {
-  makeStyles,
-  Grid,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Hidden,
-} from '@material-ui/core';
+import { makeStyles, Grid, Typography, Hidden } from '@material-ui/core';
 
 import { FiberManualRecord } from '@material-ui/icons';
+
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+import moment from 'moment';
 
 import React from 'react';
 
@@ -35,244 +33,194 @@ const useStyles = makeStyles(theme => ({
 
 const svg = require('../../../images/shadowed-logo.svg');
 const imageFomina = require('../../../images/fomina.jpg');
-const imageMain = require('../../../images/fall.jpg');
+const imageDiv = require('../../../images/div.png');
+const time= moment().fromNow();
 
-export const ScreenTwo = ({ ...props }) => {
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: 'block', background: 'red' }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: 'block', background: 'green' }}
+      onClick={onClick}
+    />
+  );
+}
+
+export const ScreenThree = ({ ...props }) => {
   const classes = useStyles({});
   // const theme = useTheme();
   // const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    centerMode: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    variableWidth: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+
   return (
     <>
       <Hidden xsDown>
-        <Container smSize={20} mdSize={80}>
-          <Grid
-            container
-            direction="row"
-            justify="space-between"
-            alignItems="center"
-            spacing={8}>
-            {/*  лучше ограничить левую часть sm={4} md={3} */}
-            <Grid item xs={5}>
-              <Grid
-                container
-                direction="row"
-                justify="flex-end"
-                alignItems="center">
-                <Grid
-                  item
-                  xs={8}
+        <Typography variant="h4" component="h2">
+          Ближайшие курсы
+        </Typography>
+        <Slider {...settings}>
+          <div
+            style={{
+              width: 100,
+            }}>
+            <div
+              style={{
+                backgroundColor: 'rgba(22, 61, 91, 0.35)',
+                height: 100,
+              }}
+            />
+          </div>
+          <div
+            style={{
+              width: 300,
+            }}>
+            <div
+              style={{
+                height: 100,
+                backgroundColor: 'rgba(22, 61, 191, 0.35)',
+                position: 'relative',
+              }}>
+              <img
+                alt="avatar teacher"
+                src={imageFomina}
+                style={{
+                  position: 'absolute',
+                  width: 50,
+                  height: 50,
+                  borderRadius: '50%',
+                  top: 10,
+                  left: 10,
+                }}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 5,
+                  right: 5,
+                }}>
+                <span>Весь мир театр</span>
+                <p
                   style={{
-                    height: '45vh',
+                    fontSize: 11,
                   }}>
-                  <div
-                    style={{
-                      background: 'red',
-                      overflow: 'hidden',
-                      width: '100%',
-                      height: '100%',
-                    }}>
-                    <img
-                      src={imageMain}
-                      alt="main"
-                      style={{
-                        width: '100%',
-                      }}
-                    />
-                  </div>
-                </Grid>
-              </Grid>
-              <Spacing size={6} />
-              <Grid
-                container
-                direction="row"
-                justify="flex-start"
-                alignItems="center">
-                <Grid
-                  item
-                  xs={8}
-                  style={{
-                    height: '35vh',
-                  }}>
-                  <div
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      background: 'blue',
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={4}>
-                  <div
-                    style={{
-                      paddingLeft: 20,
-                    }}>
-                    <Typography variant="h4" component="h3">
-                      Татьяна Фомина
-                    </Typography>
-                  </div>
-                </Grid>
-              </Grid>
-              {/* <Spacing size={4} /> */}
-              <Grid
-                container
-                direction="row"
-                justify="flex-end"
-                alignItems="center">
-                <Grid
-                  item
-                  xs={4}
-                  style={{
-                    height: '20vh',
-                  }}>
-                  <div
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      background: '#ced2ce',
-                    }}
-                  />
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={7}>
-              <Grid
-                container
-                direction="row"
-                justify="flex-start"
-                alignItems="flex-start">
-                <Grid item>
-                  <Typography variant="h2" component="h2" align="left">
-                    Команда
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Spacing size={10} />
-              <Grid
-                container
-                direction="row"
-                justify="flex-end"
-                alignItems="flex-end">
-                <Grid item xs={6}>
-                  <div
-                    style={{
-                      position: 'relative',
-                    }}>
-                    <div
-                      style={{
-                        background: 'rgba(206, 210, 206, 0.36)',
-                        position: 'absolute',
-                        top: '43%',
-                        width: '100%',
-                        height: '75%',
-                        zIndex: 1,
-                      }}
-                    />
-                    <div
-                      style={{
-                        position: 'relative',
-                        zIndex: 2,
-                      }}>
-                      <Typography
-                        variant="body1"
-                        component="p"
-                        style={{
-                          padding: '20px 30px',
-                          lineHeight: 2,
-                        }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                      </Typography>
-                    </div>
-                  </div>
-                </Grid>
-                <Grid item xs={6}>
-                  <img
-                    src={imageFomina}
-                    alt="fomina"
-                    style={{
-                      width: '100%',
-                    }}
-                  />
-                </Grid>
-              </Grid>
-              <Grid
-                container
-                direction="row"
-                justify="flex-end"
-                alignItems="flex-end">
-                <Grid item>
-                  <div
-                    style={{
-                      width: 10,
-                      height: 10,
-                    }}>
-                    <FiberManualRecord
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        color: 'rgba(19, 13, 19, 0.78)',
-                      }}
-                    />
-                  </div>
-                </Grid>
-                <Grid item>
-                  <div
-                    style={{
-                      width: 10,
-                      height: 10,
-                    }}>
-                    <FiberManualRecord
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        color: '#696569ab',
-                      }}
-                    />
-                  </div>
-                </Grid>
-                <Grid item>
-                  <div
-                    style={{
-                      width: 10,
-                      height: 10,
-                    }}>
-                    <FiberManualRecord
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        color: '#696569ab',
-                      }}
-                    />
-                  </div>
-                </Grid>
-                <Grid item>
-                  <div
-                    style={{
-                      width: 10,
-                      height: 10,
-                    }}>
-                    {' '}
-                    <FiberManualRecord
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        color: '#696569ab',
-                      }}
-                    />
-                  </div>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Container>
+                  мастер-класс
+                </p>
+              </div>
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: 5,
+                  left: 5,
+                }}>
+                <p>{time}</p>
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
+              width: 200,
+            }}>
+            <div
+              style={{
+                height: 100,
+                backgroundColor: 'rgba(22, 61, 191, 0.85)',
+              }}
+            />
+          </div>
+          <div
+            style={{
+              width: 100,
+            }}>
+            <div
+              style={{
+                height: 100,
+                backgroundColor: 'rgba(22, 61, 91, 0.35)',
+              }}
+            />
+          </div>
+          <div
+            style={{
+              width: 300,
+            }}>
+            <div
+              style={{
+                height: 100,
+                backgroundColor: 'rgba(22, 61, 191, 0.35)',
+                overflowY: 'hidden',
+              }}>
+              <img
+                src={imageDiv}
+                alt="course"
+                style={{
+                  width: '100%',
+                }}
+              />
+            </div>
+          </div>
+          <div
+            style={{
+              width: 200,
+            }}>
+            <div
+              style={{
+                height: 100,
+                backgroundColor: 'rgba(22, 61, 191, 0.85)',
+              }}
+            />
+          </div>
+          <div
+            style={{
+              width: 200,
+            }}>
+            <div
+              style={{
+                height: 100,
+                backgroundColor: 'rgba(22, 61, 191, 0.35)',
+              }}
+            />
+          </div>
+          <div
+            style={{
+              width: 300,
+            }}>
+            <div
+              style={{
+                height: 100,
+                backgroundColor: 'rgba(22, 61, 191, 0.35)',
+                overflowY: 'hidden',
+              }}>
+              <img
+                src={imageDiv}
+                alt="course"
+                style={{
+                  width: '100%',
+                }}
+              />
+            </div>
+          </div>
+        </Slider>
       </Hidden>
       <Hidden smUp />
     </>

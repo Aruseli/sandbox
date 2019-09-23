@@ -1,11 +1,11 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import moment from 'moment';
-import 'moment/locale/ru';
+// import moment from 'moment';
+// import 'moment/locale/ru';
 
-moment.locale('ru');
-moment.updateLocale('ru');
+// moment.locale('ru');
+// moment.updateLocale('ru');
 
 const resources = {
   ru: {

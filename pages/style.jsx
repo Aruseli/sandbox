@@ -24,6 +24,7 @@ import HeaderFacults from '../imports/components/vshsdt/header-facults';
 import { ScreenOne } from '../imports/components/vshsdt/screen-one';
 import { ScreenTwo } from '../imports/components/vshsdt/screen-two';
 import { ScreenThree } from '../imports/components/vshsdt/screen-three';
+import { ScreenFour } from '../imports/components/vshsdt/screen-four';
 
 export default () => {
   return (
@@ -38,6 +39,8 @@ export default () => {
           <ScreenTwo />
           <Spacing size={30} />
           <ScreenThree />
+          <Spacing size={30} />
+          <ScreenFour />
         </Body>
       </ThemeProvider>
     </>

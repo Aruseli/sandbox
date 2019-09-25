@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
     width: 100,
     height: 100,
     background: 'red',
-      '&:hover': {
+      '&:hover div': {  // или так '&:hover $div' но так не работает
         position: 'absolute',
         zIndex: 1,
         right: 0,
@@ -87,6 +87,7 @@ function SampleNextArrow(props) {
       className={classes.right}
       onClick={onClick}
     >
+      <div />
       <KeyboardArrowRight />
     </div>
   );
@@ -110,13 +111,33 @@ export const ScreenThree = ({ ...props }) => {
   // const theme = useTheme();
   // const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
 
-  const settings = {
+  const settingsOne = {
     dots: true,
     infinite: true,
     centerMode: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />
+  };
+
+  const settingsTwo = {
+    dots: true,
+    infinite: true,
+    centerMode: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    variableWidth: true,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+    rtl: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />
   };
@@ -166,7 +187,7 @@ export const ScreenThree = ({ ...props }) => {
           Ближайшие курсы
         </Typography>
         <Spacing size={5} />
-        <Slider {...settings}>
+        <Slider {...settingsOne}>
           {events.map(oneEvent => (
             <div
               key={oneEvent._id}
@@ -183,7 +204,7 @@ export const ScreenThree = ({ ...props }) => {
           Прошедшие события
         </Typography>
         <Spacing size={5} />
-        <Slider {...settings}>
+        <Slider {...settingsTwo}>
           {events.map(oneEvent => (
             <div
               key={oneEvent._id}

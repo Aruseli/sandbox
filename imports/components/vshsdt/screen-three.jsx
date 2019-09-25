@@ -1,5 +1,7 @@
 import { makeStyles, Typography, Hidden } from "@material-ui/core";
 
+import {KeyboardArrowLeft, KeyboardArrowRight} from "@material-ui/icons";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -25,7 +27,50 @@ const useStyles = makeStyles(theme => ({
       top: 30,
       right: 0
     }
-  }
+  },
+  // box: {
+  //   width: '70%',
+  //   height: 200,
+  //   background: '#F0F0F0',
+  //   margin: '40px auto'
+  // },
+  left: {
+    position: 'absolute',
+    zIndex: 99999,
+    top: 0,
+    left: 0,
+    width: 100,
+    height: 100,
+    background: 'red',
+      '&:hover': {
+        zIndex: 1,
+        left: 'auto',
+        width: 100,
+        maxWidth: 300,
+        background: 'red',
+        boxShadow: '0 15px 10px #777',
+        transform: 'rotate(3deg)'
+    }
+  },
+  right: {
+    position: 'absolute',
+    zIndex: 99999,
+    top: 0,
+    right: 0,
+    width: 100,
+    height: 100,
+    background: 'red',
+      '&:hover': {
+        position: 'absolute',
+        zIndex: 1,
+        right: 0,
+        width: 100,
+        maxWidth: 300,
+        background: 'red',
+        boxShadow: '0 15px 10px #777',
+        transform: 'rotate(-3deg)'
+    }
+  },
 }));
 
 const svg = require("../../../images/shadowed-logo.svg");
@@ -35,24 +80,28 @@ const time = "18:00"; //moment().fromNow();
 const date = "02.11";
 
 function SampleNextArrow(props) {
+  const classes = useStyles({});
   const { className, style, onClick } = props;
   return (
     <div
-      className={className}
-      style={{ ...style, display: "block", background: "red" }}
+      className={classes.right}
       onClick={onClick}
-    />
+    >
+      <KeyboardArrowRight />
+    </div>
   );
 }
 
 function SamplePrevArrow(props) {
+  const classes = useStyles({});
   const { className, style, onClick } = props;
   return (
     <div
-      className={className}
-      style={{ ...style, display: "block", background: "green" }}
+      className={classes.left}
       onClick={onClick}
-    />
+    >
+      <KeyboardArrowLeft />
+    </div>
   );
 }
 
@@ -75,7 +124,7 @@ export const ScreenThree = ({ ...props }) => {
   const events = [
     {
       _id: "a",
-      avatarSrc: { imageFomina },
+      avatarSrc: imageFomina,
       title: "Весь мир театр",
       time: "12:00",
       date: "02.11",
@@ -98,7 +147,7 @@ export const ScreenThree = ({ ...props }) => {
     },
     {
       _id: "c",
-      bgImg: { imageDiv },
+      bgImg: imageDiv,
       title: "Быть или не быть",
       time: "12:00",
       date: "02.11",
@@ -116,177 +165,37 @@ export const ScreenThree = ({ ...props }) => {
         <Typography variant="h4" component="h2">
           Ближайшие курсы
         </Typography>
-        <Slider {...settings}>
-          <div
-            style={{
-              width: 100
-            }}
-          >
-            <div
-              style={{
-                backgroundColor: "rgba(22, 61, 91, 0.35)",
-                height: 100
-              }}
-            />
-          </div>
-          <div
-            style={{
-              width: 300
-            }}
-          >
-            <div
-              style={{
-                height: 100,
-                backgroundColor: "rgba(22, 61, 191, 0.35)",
-                position: "relative"
-              }}
-            >
-              <img
-                alt="avatar teacher"
-                src={imageFomina}
-                style={{
-                  position: "absolute",
-                  width: 50,
-                  height: 50,
-                  borderRadius: "50%",
-                  top: 10,
-                  left: 10
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  top: 5,
-                  right: 5
-                }}
-              >
-                <span>Весь мир театр</span>
-                <p
-                  style={{
-                    fontSize: 11
-                  }}
-                >
-                  мастер-класс
-                </p>
-              </div>
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 5,
-                  fontSize: 11
-                }}
-              >
-                <p>
-                  {time}&ensp;{date}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div
-            style={{
-              width: 200
-            }}
-          >
-            <div
-              style={{
-                height: 100,
-                backgroundColor: "rgba(22, 61, 191, 0.85)"
-              }}
-            />
-          </div>
-          <div
-            style={{
-              width: 100
-            }}
-          >
-            <div
-              style={{
-                height: 100,
-                backgroundColor: "rgba(22, 61, 91, 0.35)"
-              }}
-            />
-          </div>
-          <div
-            style={{
-              width: 300
-            }}
-          >
-            <div
-              style={{
-                height: 100,
-                backgroundColor: "rgba(22, 61, 191, 0.35)",
-                overflowY: "hidden"
-              }}
-            >
-              <img
-                src={imageDiv}
-                alt="course"
-                style={{
-                  width: "100%"
-                }}
-              />
-            </div>
-          </div>
-          <div
-            style={{
-              width: 200
-            }}
-          >
-            <div
-              style={{
-                height: 100,
-                backgroundColor: "rgba(22, 61, 191, 0.85)"
-              }}
-            />
-          </div>
-          <div
-            style={{
-              width: 200
-            }}
-          >
-            <div
-              style={{
-                height: 100,
-                backgroundColor: "rgba(22, 61, 191, 0.35)"
-              }}
-            />
-          </div>
-          <div
-            style={{
-              width: 300
-            }}
-          >
-            <div
-              style={{
-                height: 100,
-                backgroundColor: "rgba(22, 61, 191, 0.35)",
-                overflowY: "hidden"
-              }}
-            >
-              <img
-                src={imageDiv}
-                alt="course"
-                style={{
-                  width: "100%"
-                }}
-              />
-            </div>
-          </div>
-        </Slider>
         <Spacing size={5} />
         <Slider {...settings}>
           {events.map(oneEvent => (
             <div
               key={oneEvent._id}
               style={{
-                width: oneEvent.width
+                width: oneEvent.width,
               }}
             >
               <Timeline {...oneEvent} />
             </div>
           ))}
         </Slider>
+        <Spacing size={5} />
+        <Typography variant="h4" component="h2">
+          Прошедшие события
+        </Typography>
+        <Spacing size={5} />
+        <Slider {...settings}>
+          {events.map(oneEvent => (
+            <div
+              key={oneEvent._id}
+              style={{
+                width: oneEvent.width,
+              }}
+            >
+              <Timeline {...oneEvent} />
+            </div>
+          ))}
+        </Slider>
+        <Spacing size={5} />
       </Hidden>
       <Hidden smUp />
     </>

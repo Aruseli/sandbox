@@ -18,54 +18,39 @@ export const Timeline = ({
 }) => {
   return (
     <Link href={href}>
-      <div
-        style={{
-          width: width || 100,
-          backgroundColor: bgColor || 'transparent',
-          position: 'relative',
-          overflow: 'hidden',
-          color,
-        }}>
-        {bgImg ? (
-          <>
-            <img
-              src={bgImg}
-              style={{
-                width: '100%',
-                position: 'absolute',
-                top: '-50%',
-                marginTop: '50%',
-              }}
-              alt={altImg}
-            />
-            <div
-              style={{
-                position: 'absolute',
-                top: 5,
-                right: 5,
-              }}>
-              <span>{title}</span>
-              <p
+      <div style={{
+        paddingLeft: 5,
+        paddingRight: 5,
+        width: width || 150,
+        boxSizing: 'border-box',
+      }}>
+        <div
+          style={{
+            height: 100,
+            width: '100%',
+            backgroundColor: bgColor || 'transparent',
+            position: 'relative',
+            overflow: 'hidden',
+            color,
+          }}>
+          {bgImg ? (
+            <div style={{
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+            }}>
+              <img
+                src={bgImg}
                 style={{
-                  fontSize: 11,
-                }}>
-                {event}
-              </p>
+                  width: '100%',
+                }}
+                alt={altImg}
+              />
             </div>
-            <div
-              style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 5,
-                fontSize: 11,
-              }}>
-              <p>
-                {time}&ensp;{date}
-              </p>
-            </div>
-          </>
-        ) : bgColor ? (
-          <>
+          ) : null }
+          {avatarSrc ? (
             <img
               alt={altAvatar}
               src={avatarSrc}
@@ -78,33 +63,40 @@ export const Timeline = ({
                 left: 10,
               }}
             />
+          ) : null}
+          <div
+            style={{
+              position: 'absolute',
+              top: 5,
+              right: 10,
+              textAlign: 'right'
+            }}>
+            {title ?
+            <span>{title}</span> :
+            null
+            }
+            {event ? 
             <div
               style={{
-                position: 'absolute',
-                top: 5,
-                right: 5,
-              }}>
-              <span>{title}</span>
-              <p
-                style={{
-                  fontSize: 11,
-                }}>
-                {event}
-              </p>
-            </div>
-            <div
-              style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 5,
                 fontSize: 11,
               }}>
-              <p>
-                {time}&ensp;{date}
-              </p>
-            </div>
-          </>
-        ) : null}
+              {event}
+            </div> :
+            null
+            }
+          </div>
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 10,
+              fontSize: 11,
+            }}>
+            <p>
+              {time}&ensp;{date}
+            </p>
+          </div>
+        </div>
       </div>
     </Link>
   );

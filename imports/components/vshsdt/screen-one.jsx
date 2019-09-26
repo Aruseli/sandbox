@@ -109,12 +109,12 @@ export const ScreenOne = ({ ...props }) => {
                   item
                   style={{
                     position: 'relative',
-                    left: 200,
+                    left: 100,
                   }}>
-                  <Typography variant="h4" component="h1" align="center">
+                  <Typography variant="h2" component="h1" align="center">
                     СТИЛИСТИКИ
                   </Typography>
-                  <Typography variant="h6" component="h2" align="right">
+                  <Typography variant="h5" component="h2" align="right">
                     факультет
                   </Typography>
                 </Grid>

@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import React from 'react';
 
 export const ReviewFoto = ({
@@ -14,20 +12,19 @@ export const ReviewFoto = ({
       }}>
         <div
           style={{
-            height: 300,
-            width: '100%',
+            height: 250,
+            width: 350,
             position: 'relative',
             overflow: 'hidden',
           }}>
-          {avatarSrc ? (
             <img
               alt={altAvatar}
               src={avatarSrc}
               style={{
                 width: '100%',
+                height: '100%'
               }}
             />
-          ) : null}
         </div>
       </div>
   );

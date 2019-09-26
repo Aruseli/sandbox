@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import React from "react";
 
 import { Spacing } from "../spacing";
+import {Container} from "../container";
 
 import { Timeline } from "./timeline";
 
@@ -28,12 +29,6 @@ const useStyles = makeStyles(theme => ({
       right: 0
     }
   },
-  // box: {
-  //   width: '70%',
-  //   height: 200,
-  //   background: '#F0F0F0',
-  //   margin: '40px auto'
-  // },
   left: {
     position: 'absolute',
     zIndex: 99999,
@@ -115,6 +110,8 @@ export const ScreenThree = ({ ...props }) => {
     dots: true,
     infinite: true,
     centerMode: true,
+    className: "center",
+    centerPadding: 60,
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
@@ -183,9 +180,11 @@ export const ScreenThree = ({ ...props }) => {
   return (
     <>
       <Hidden xsDown>
-        <Typography variant="h4" component="h2">
-          Ближайшие курсы
-        </Typography>
+        <Container mdSize={30}>
+          <Typography variant="h3" component="h2">
+            Ближайшие курсы
+          </Typography>
+        </Container>
         <Spacing size={5} />
         <Slider {...settingsOne}>
           {events.map(oneEvent => (
@@ -200,9 +199,11 @@ export const ScreenThree = ({ ...props }) => {
           ))}
         </Slider>
         <Spacing size={5} />
-        <Typography variant="h4" component="h2">
-          Прошедшие события
-        </Typography>
+        <Container mdSize={30}>
+          <Typography variant="h3" component="h2">
+            Прошедшие события
+          </Typography>
+        </Container>
         <Spacing size={5} />
         <Slider {...settingsTwo}>
           {events.map(oneEvent => (

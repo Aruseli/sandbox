@@ -2,9 +2,6 @@ import {
   makeStyles,
   Grid,
   Typography,
-  List,
-  ListItem,
-  ListItemText,
   Hidden,
 } from '@material-ui/core';
 
@@ -142,7 +139,7 @@ export const ScreenTwo = ({ ...props }) => {
                 justify="flex-start"
                 alignItems="flex-start">
                 <Grid item>
-                  <Typography variant="h2" component="h2" align="left">
+                  <Typography variant="h3" component="h2" align="left">
                     Команда
                   </Typography>
                 </Grid>

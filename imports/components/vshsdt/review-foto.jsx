@@ -6,26 +6,18 @@ export const ReviewFoto = ({
 }) => {
   return (
     <div style={{
-        paddingLeft: 5,
-        paddingRight: 5,
-        boxSizing: 'border-box',
-      }}>
-        <div
-          style={{
-            height: 250,
-            width: 350,
-            position: 'relative',
-            overflow: 'hidden',
-          }}>
-            <img
-              alt={altAvatar}
-              src={avatarSrc}
-              style={{
-                width: '100%',
-                height: '100%'
-              }}
-            />
-        </div>
-      </div>
+      paddingLeft: 5,
+      paddingRight: 5,
+      height: 300,
+      boxSizing: 'border-box',
+    }}>
+      <img
+        alt={altAvatar}
+        src={avatarSrc}
+        style={{
+          height: '100%'
+        }}
+      />
+    </div>
   );
 };

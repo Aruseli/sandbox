@@ -1,4 +1,4 @@
-import { makeStyles, Typography, Hidden } from "@material-ui/core";
+import { Grid, makeStyles, Typography, Hidden } from "@material-ui/core";
 
 import {KeyboardArrowLeft, KeyboardArrowRight} from "@material-ui/icons";
 
@@ -36,7 +36,15 @@ const useStyles = makeStyles(theme => ({
     width: 30,
     height: 200,
     background: 'rgba(0, 0, 0, .35)',
-  }
+  },
+  slickSlider: {
+    '& .slick-slide': {
+      transition: 'all 1s ease', 
+    },
+    '& .slick-slide:not(.slick-current)': {
+      transform: 'scale(0.8)',
+    },
+  },
 }));
 
 const svg = require("../../../images/shadowed-logo.svg");
@@ -83,10 +91,11 @@ export const ScreenFive = ({ ...props }) => {
 
   const settings = {
     infinite: true,
-    centerMode: true,
-    slidesToShow: 2,
+    // centerMode: true,
+    slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    // autoplay: true,
+    variableWidth: true,
     speed: 2000,
     autoplaySpeed: 2000,
     pauseOnHover: true,
@@ -127,42 +136,46 @@ export const ScreenFive = ({ ...props }) => {
       backgroundColor: '#ff0000',
       zIndex: 333
     }}>
-      <div style={{
-        position: 'absolute',
-        width: '80%',
-        height: 300,
-        left: '10%',
-        top: -150
-      }}>    
+      <div
+        className={classes.slickSlider}
+        style={{
+          position: 'absolute',
+          width: '80%',
+          height: 300,
+          left: '10%',
+          top: -150,
+        }}
+      >    
         <Slider {...settings}>
           {reviewsFoto.map(oneReviewFoto => (
           <div
             key={oneReviewFoto._id}
-            style={{
-            width: oneReviewFoto.width,
-            }}
           >
             <ReviewFoto {...oneReviewFoto} />
           </div>
           ))}
         </Slider>
       </div>
-      <div style={{
+      <Grid container justify="center" alignItems="center" style={{
         position: 'absolute',
-        width: '30%',
-        height: 400,
-        left: '40%',
-        top: -295
+        width: '80%',
+        height: 560,
+        left: '20%',
+        top: -300
       }}>
-        <ReviewText
-          name='Эмилия Зотова'
-          text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac dignissim ex, sit amet efficitur orci. In ut risus non nisi commodo ultrices. Ut tortor turpis, suscipit vel leo ac, tincidunt posuere felis.'
-          href='https://styleschool.ru/style4make'
-          color= "inherit"
-          course= "Стилистика для визажистов"
-          date= "02.11"
-        />
-      </div>
+        <Grid item xs={6} sm={6} md={4} lg={3} style={{
+
+        }}>
+          <ReviewText
+            name='Эмилия Зотова'
+            text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac dignissim ex, sit amet efficitur orci. In ut risus non nisi commodo ultrices. Ut tortor turpis, suscipit vel leo ac, tincidunt posuere felis.'
+            href='https://styleschool.ru/style4make'
+            color= "inherit"
+            course= "Стилистика для визажистов"
+            date= "02.11"
+          />
+        </Grid>
+      </Grid>
     </div>
     <Map />
     </Hidden>

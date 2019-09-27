@@ -36,16 +36,31 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     width: 100,
     height: 100,
-    background: 'red',
-      '&:hover': {
-        zIndex: 1,
-        left: 'auto',
-        width: 100,
-        maxWidth: 300,
-        background: 'red',
-        boxShadow: '0 15px 10px #777',
-        transform: 'rotate(3deg)'
-    }
+    '& div:nth-child(1)': {
+      width: 100,
+      height: 100,
+      background: '#fff',
+      transition: 'all 1s ease',
+      boxShadow: '0 0 0 0 #777',
+    },
+    '&:hover div:nth-child(1)': {
+      boxShadow: '18px 0 23px -16px #777',
+    },
+    '& div:nth-child(2)': {
+      top: '18%',
+      left: '26%',
+      width: '71%',
+      height: '70%',
+      zIndex: -1,
+      position: 'absolute',
+      background: 'transparent',
+      transition: 'all 1s ease',
+      transform: 'rotate(9deg)',
+      boxShadow: '0 0 0 0 #777',
+    },
+    '&:hover div:nth-child(2)': {
+      boxShadow: '0 15px 10px #777',
+    },
   },
   right: {
     position: 'absolute',
@@ -55,15 +70,15 @@ const useStyles = makeStyles(theme => ({
     width: 100,
     height: 100,
     background: 'red',
-      '&:hover div': {  // или так '&:hover $div' но так не работает
-        position: 'absolute',
-        zIndex: 1,
-        right: 0,
-        width: 100,
-        maxWidth: 300,
-        background: 'red',
-        boxShadow: '0 15px 10px #777',
-        transform: 'rotate(-3deg)'
+    '&:hover div': {  // или так '&:hover $div' но так не работает
+      position: 'absolute',
+      zIndex: 1,
+      right: 0,
+      width: 100,
+      maxWidth: 300,
+      background: 'red',
+      boxShadow: '0 15px 10px #777',
+      transform: 'rotate(-3deg)'
     }
   },
 }));
@@ -96,7 +111,10 @@ function SamplePrevArrow(props) {
       className={classes.left}
       onClick={onClick}
     >
-      <KeyboardArrowLeft />
+      <div>
+        <KeyboardArrowLeft />
+      </div>
+      <div/>
     </div>
   );
 }

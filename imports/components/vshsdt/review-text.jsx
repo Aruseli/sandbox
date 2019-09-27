@@ -16,8 +16,9 @@ export const ReviewText = ({
         backgroundColor: '#fff',
         position: 'relative',
         padding: 40,
-        height: 400,
-        boxShadow: '0 0 5px'
+        height: '100%',
+        boxSizing: 'border-box',
+        boxShadow: '0 0 1px'
       }}>
         <div style={{
           textAlign: 'left',
@@ -30,14 +31,12 @@ export const ReviewText = ({
           style={{
             textAlign: 'justify',
             color,
-            lineHeight: 2
+            lineHeight: 2,
+            paddingBottom: 25
           }}> 
           {text}
         </div>
         <div style={{
-          position: 'absolute',
-          bottom: 40,
-          right: 40
         }}>
           <div style={{
             fontSize: 12,

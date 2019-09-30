@@ -94,7 +94,7 @@ export const ScreenFive = ({ ...props }) => {
     // centerMode: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     variableWidth: true,
     speed: 2000,
     autoplaySpeed: 2000,

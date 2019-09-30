@@ -1,89 +1,27 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import _ from 'lodash';
+import 'normalize.css';
 
-export const fontFamily = 'Helvetica, sans-serif';
-export const darkBackgroundColor = '#171717';
-export const goldColor = 'rgb(209, 181, 108)';
+import { AnaliticsProvider } from './packages/analitics';
+import { wrapSsrGql } from './packages/gql/ssr';
 
-export const theme = createMuiTheme({
-  typography: {
-    fontFamily,
-    h1: {
-      fontFamily,
-      fontWeight: 'bold',
-      textTransform: 'uppercase'
+/**
+ * Base app page wrapper. Provide ssr gql and analitics.
+ * @param {function} Component
+ * @returns {function} WrappedComponent
+ */
+export const wrapPage = Component => {
+  return wrapSsrGql({
+    gqlPath: process.env.GQL_PATH,
+    gqlSecret: process.env.GQL_SECRET,
+    Component: () => {
+      return (
+        <AnaliticsProvider 
+          facebookPixel={process.env.BG_TOKEN}
+          googleAnalitics={process.env.GA_TOKEN}
+          yandexMetrika={process.env.YM_TOKEN}
+        >
+          <Component />
+        </AnaliticsProvider>
+      );
     },
-    h2: {
-      fontFamily,
-      fontWeight: 'bold',
-      textTransform: 'uppercase'
-    },
-    h3: {
-      fontFamily,
-      fontWeight: 'bold',
-      textTransform: 'uppercase'
-    },
-    h4: {
-      fontFamily,
-      fontWeight: 'bold'
-    },
-    h5: {
-      fontFamily,
-      fontWeight: 'bold'
-    },
-    h6: {
-      fontFamily,
-      fontWeight: 'bold'
-    },
-    subtitle1: {
-      fontFamily
-    },
-    subtitle2: {
-      fontFamily
-    },
-    body1: {
-      fontFamily
-    },
-    body2: {
-      fontFamily
-    },
-    button: {
-      fontFamily
-    },
-    caption: {
-      fontFamily
-    },
-    overline: {
-      fontFamily
-    }
-  },
-  overrides: {
-    MuiButton: {
-      root: {
-        minWidth: 0
-      }
-    },
-    MuiTab: {
-      root: {
-        minWidth: 0
-      }
-    },
-    MuiList: {
-      root: {
-        fontFamily
-      }
-    }
-  }
-});
-
-export const styleTheme = theme =>
-  createMuiTheme(
-    _.merge({}, theme, {
-      palette: {
-        primary: {
-          main: 'red'
-        }
-      }
-    })
-  );
+  });
+};

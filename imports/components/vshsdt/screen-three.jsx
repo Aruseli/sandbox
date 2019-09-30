@@ -2,6 +2,8 @@ import { makeStyles, Typography, Hidden } from "@material-ui/core";
 
 import {KeyboardArrowLeft, KeyboardArrowRight} from "@material-ui/icons";
 
+import {Calendar} from "./calendar";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -69,17 +71,31 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     width: 100,
     height: 100,
-    background: 'red',
-    '&:hover div': {  // или так '&:hover $div' но так не работает
-      position: 'absolute',
-      zIndex: 1,
-      right: 0,
+    '& div:nth-child(1)': {
       width: 100,
-      maxWidth: 300,
-      background: 'red',
+      height: 100,
+      background: '#fff',
+      transition: 'all 1s ease',
+      boxShadow: '0 0 0 0 #777',
+    },
+    '&:hover div:nth-child(1)': {
+      boxShadow: '-18px 0 23px -16px #777',
+    },
+    '& div:nth-child(2)': {
+      top: '18%',
+      right: '26%',
+      width: '71%',
+      height: '70%',
+      zIndex: -1,
+      position: 'absolute',
+      background: 'transparent',
+      transition: 'all 1s ease',
+      transform: 'rotate(-9deg)',
+      boxShadow: '0 0 0 0 #777',
+    },
+    '&:hover div:nth-child(2)': {
       boxShadow: '0 15px 10px #777',
-      transform: 'rotate(-3deg)'
-    }
+    },
   },
 }));
 
@@ -97,8 +113,14 @@ function SampleNextArrow(props) {
       className={classes.right}
       onClick={onClick}
     >
-      <div />
-      <KeyboardArrowRight />
+      <div>
+        <KeyboardArrowRight style={{
+          position: 'absolute',
+          top: 40,
+          left: 40
+        }} />
+      </div>
+      <div/>
     </div>
   );
 }
@@ -112,7 +134,11 @@ function SamplePrevArrow(props) {
       onClick={onClick}
     >
       <div>
-        <KeyboardArrowLeft />
+        <KeyboardArrowLeft style={{
+          position: 'absolute',
+          top: 40,
+          left: 40
+        }} />
       </div>
       <div/>
     </div>
@@ -200,11 +226,11 @@ export const ScreenThree = ({ ...props }) => {
       <Hidden xsDown>
         <Container mdSize={30}>
           <Typography variant="h3" component="h2">
-            Ближайшие курсы
+            Курсы
           </Typography>
         </Container>
         <Spacing size={5} />
-        <Slider {...settingsOne}>
+        {/* <Slider {...settingsOne}>
           {events.map(oneEvent => (
             <div
               key={oneEvent._id}
@@ -215,11 +241,12 @@ export const ScreenThree = ({ ...props }) => {
               <Timeline {...oneEvent} />
             </div>
           ))}
-        </Slider>
+        </Slider> */}
+        <Calendar />
         <Spacing size={5} />
         <Container mdSize={30}>
           <Typography variant="h3" component="h2">
-            Прошедшие события
+            События
           </Typography>
         </Container>
         <Spacing size={5} />

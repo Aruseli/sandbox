@@ -44,6 +44,7 @@ export const ScreenOne = ({ ...props }) => {
         <div
           style={{
             position: 'relative',
+            height: '100vh'
           }}>
           <div
             style={{
@@ -97,6 +98,7 @@ export const ScreenOne = ({ ...props }) => {
             style={{
               position: 'relative',
               zIndex: 4,
+              height: '100%'
             }}>
             <Container smSize={20} mdSize={30}>
               <Grid
@@ -140,13 +142,12 @@ export const ScreenOne = ({ ...props }) => {
               container
               direction="row"
               justify="center"
-              alignItems="center">
+              alignItems="center" style={{
+                height: '100%'
+              }}>
               <Grid
                 item
-                xs={6}
-                style={{
-                  paddingTop: 230,
-                }}>
+                xs={6}>
                 <div>
                   <Typography variant="body1" component="p" align="center">
                     о факультете о факультете о факультете о факультете о

@@ -21,10 +21,7 @@ import { Spacing } from '../imports/components/spacing';
 import { InsideSlide } from '../imports/components/effects';
 import { Draw } from '../imports/components/draw';
 import HeaderFacults from '../imports/components/vshsdt/header-facults';
-import { ScreenOne } from '../imports/components/vshsdt/screen-one';
-import { ScreenTwo } from '../imports/components/vshsdt/screen-two';
-import { ScreenThree } from '../imports/components/vshsdt/screen-three';
-import { ScreenFive } from '../imports/components/vshsdt/screen-five';
+import {Contacts} from '../imports/components/vshsdt/contacts';
 
 export default () => {
   return (
@@ -34,13 +31,7 @@ export default () => {
           {/* <HeaderFacults
       screen={'style'}
     /> */}
-          <ScreenOne />
-          {/* <Spacing size={30} /> */}
-          <ScreenTwo />
-          <Spacing size={30} />
-          <ScreenThree />
-          <Spacing size={30} />
-          <ScreenFive />
+          <Contacts />
         </Body>
       </ThemeProvider>
     </>

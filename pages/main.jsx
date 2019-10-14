@@ -6,19 +6,14 @@ import { useSpring, useTrail, animated as a, interpolate } from 'react-spring';
 
 import { Body } from '../imports/components/body';
 import { theme as defaultTheme } from '../imports/theme';
-import { wrapPage } from '../imports/wrap-page';
 import { Spacing } from '../imports/components/spacing';
-import { InsideSlide } from '../imports/components/effects';
-import { Draw } from '../imports/components/draw';
 import HeaderFacults from '../imports/components/vshsdt/header-facults';
-import { ScreenOne } from '../imports/components/vshsdt/screen-one';
-import { ScreenTwo } from '../imports/components/vshsdt/screen-two';
-import { ScreenThree } from '../imports/components/vshsdt/screen-three';
-import { ScreenFour } from '../imports/components/vshsdt/screen-four';
-import { ScreenFive } from '../imports/components/vshsdt/screen-five';
+import {Main} from "../imports/components/vshsdt/main";
+import {Calendar} from "../imports/components/vshsdt/calendar";
+import {Partners} from "../imports/components/vshsdt/partners";
 
 export default () => {
-  const [springProps, setSpring] = useSpring(() => ({ s: 0, spx: 0, config: { mass: 5, tension: 350, friction: 40 } }));
+  const [springProps, setSpring] = useSpring(() => ({ xys: [0,0,1], s: 0, spx: 0, config: { mass: 5, tension: 350, friction: 40 } }));
 
   // const trail = useTrail(items.length, {
   //   config,
@@ -40,7 +35,7 @@ export default () => {
       <ThemeProvider theme={defaultTheme}>
         <div 
           onScroll={onScroll}
-          onMouseMove={({ clientX: x, clientY: y }) => setSpring({ xys: [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1] })}
+          onMouseMove={({ clientX: x, clientY: y }) => setSpring({ xys: [(y - window.innerHeight / 2), (x - window.innerWidth / 2), 1.1] })}
           style={{
             position: 'fixed',
             left: 0, top: 0,
@@ -50,17 +45,13 @@ export default () => {
           }}
         >
           <Body>
-            {/*<HeaderFacults screen={'style'}/>*/}
-            <ScreenOne springProps={springProps} setSpring={setSpring} />
+            <HeaderFacults screen={'style'}/>
             <Spacing size={30} />
-            <ScreenTwo springProps={springProps} setSpring={setSpring} />
+            <Main springProps={springProps} />
             <Spacing size={30} />
-            <ScreenFour />
+            <Calendar />
             <Spacing size={30} />
-            <ScreenThree />
-           
-            <Spacing size={30} />
-            <ScreenFive />
+            <Partners />
           </Body>
         </div>
       </ThemeProvider>

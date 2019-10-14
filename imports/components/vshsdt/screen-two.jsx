@@ -5,28 +5,18 @@ import {
   Hidden,
 } from '@material-ui/core';
 
-import { FiberManualRecord } from '@material-ui/icons';
-
 import React from 'react';
+
+import { animated as a, interpolate } from 'react-spring';
 
 import { Container } from '../container';
 import { Spacing } from '../spacing';
+import {useRandomiseString} from '../use-randomise-string';
+import { DriveEtaSharp } from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
   root: {
     background: theme.palette.primary.main,
-  },
-  position: {
-    [theme.breakpoints.between('md', 'lg')]: {
-      position: 'relative',
-      top: 100,
-      right: 100,
-    },
-    [theme.breakpoints.only('sm')]: {
-      position: 'relative',
-      top: 30,
-      right: 0,
-    },
   },
 }));
 
@@ -34,10 +24,24 @@ const svg = require('../../../images/shadowed-logo.svg');
 const imageFomina = require('../../../images/fomina.jpg');
 const imageMain = require('../../../images/fall.jpg');
 
-export const ScreenTwo = ({ ...props }) => {
+export const ScreenTwo = ({springProps: {spx}, setSpring, ...props }) => {
+  const item3 = interpolate([spx], (spx) => `translateY(${spx - 550 <= 0 ? spx - 550 : 0}px)`);
+  const item4 = interpolate([spx], (spx) => `opacity(${spx}px)`);
+  const item = ['Татьяна', 'Фомина'];
+
   const classes = useStyles({});
   // const theme = useTheme();
   // const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
+
+  const randomString = useRandomiseString({string: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore
+    magna aliqua. Ut enim ad minim veniam, quis nostrud
+    exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Ut enim ad minim veniam, quis nostrud
+    exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Ut enim ad minim veniam, quis nostrud
+    exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat.`});
 
   return (
     <>
@@ -48,7 +52,8 @@ export const ScreenTwo = ({ ...props }) => {
             direction="row"
             justify="space-between"
             alignItems="center"
-            spacing={8}>
+            spacing={8}
+            >
             {/*  лучше ограничить левую часть sm={4} md={3} */}
             <Grid item xs={5}>
               <Grid
@@ -64,18 +69,21 @@ export const ScreenTwo = ({ ...props }) => {
                   }}>
                   <div
                     style={{
-                      background: 'red',
+                      background: 'white',
                       overflow: 'hidden',
                       width: '100%',
                       height: '100%',
                     }}>
-                    <img
-                      src={imageMain}
-                      alt="main"
-                      style={{
-                        width: '100%',
-                      }}
-                    />
+                    <a.div 
+                      style={{ transform: item3 }}>
+                      <img
+                        src={imageMain}
+                        alt="main"
+                        style={{
+                          width: '100%',
+                        }}
+                      />
+                    </a.div>
                   </div>
                 </Grid>
               </Grid>
@@ -105,7 +113,7 @@ export const ScreenTwo = ({ ...props }) => {
                       paddingLeft: 20,
                     }}>
                     <Typography variant="h4" component="h3">
-                      Татьяна Фомина
+                      {item}
                     </Typography>
                   </div>
                 </Grid>
@@ -177,15 +185,7 @@ export const ScreenTwo = ({ ...props }) => {
                           padding: '20px 30px',
                           lineHeight: 2,
                         }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
+                        {randomString}
                       </Typography>
                     </div>
                   </div>
@@ -211,7 +211,7 @@ export const ScreenTwo = ({ ...props }) => {
                       width: 10,
                       height: 10,
                     }}>
-                    <FiberManualRecord
+                    <div
                       style={{
                         width: '100%',
                         height: '100%',
@@ -226,7 +226,22 @@ export const ScreenTwo = ({ ...props }) => {
                       width: 10,
                       height: 10,
                     }}>
-                    <FiberManualRecord
+                    <div
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        color: '#696569ab',
+                      }}
+                    />
+                  </div>
+                </Grid>
+                <Grid item>
+                  <div
+                    style={{
+                      width: 10,
+                      DriveEtaSharp
+                    }}>
+                    <div
                       style={{
                         width: '100%',
                         height: '100%',
@@ -241,23 +256,7 @@ export const ScreenTwo = ({ ...props }) => {
                       width: 10,
                       height: 10,
                     }}>
-                    <FiberManualRecord
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        color: '#696569ab',
-                      }}
-                    />
-                  </div>
-                </Grid>
-                <Grid item>
-                  <div
-                    style={{
-                      width: 10,
-                      height: 10,
-                    }}>
-                    {' '}
-                    <FiberManualRecord
+                    <div
                       style={{
                         width: '100%',
                         height: '100%',
@@ -271,7 +270,7 @@ export const ScreenTwo = ({ ...props }) => {
           </Grid>
         </Container>
       </Hidden>
-      <Hidden smUp />
+      {/* <Hidden smUp /> */}
     </>
   );
 };

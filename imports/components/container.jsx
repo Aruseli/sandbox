@@ -14,8 +14,8 @@ const useStyle = makeStyles(theme => ({
   }),
 }));
 
-export const Container = ({ children, smSize, mdSize }) => {
+export const Container = ({ children, smSize, mdSize, ...props }) => {
   const classes = useStyle({ smSize, mdSize });
 
-  return <div className={classes.root}>{children}</div>;
+  return <div className={classes.root} {...props}>{children}</div>;
 };

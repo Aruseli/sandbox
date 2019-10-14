@@ -85,9 +85,8 @@ export const HeaderFacults = ({ screen }) => {
         <Grid
           container
           justify="center"
-          alignItems="center"
-          style={screen ? { position: 'fixed', top: 0, left: 0 } : {}}>
-          <Grid item xs={12} sm={11} md={10} lg={8}>
+          alignItems="center">
+          <Grid item xs={12} sm={8} md={10} lg={8}>
             <Grid container justify="center" alignItems="center">
               <Grid
                 item

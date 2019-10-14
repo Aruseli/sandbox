@@ -2,6 +2,10 @@ import { makeStyles, Typography, Hidden } from "@material-ui/core";
 
 import {KeyboardArrowLeft, KeyboardArrowRight} from "@material-ui/icons";
 
+import '../../i18n';
+
+import moment from "moment";
+
 import {Calendar} from "./calendar";
 
 import Slider from "react-slick";
@@ -13,23 +17,11 @@ import React from "react";
 import { Spacing } from "../spacing";
 import {Container} from "../container";
 
-import { Timeline } from "./timeline";
+import { CalendarCard } from "./calendar-card";
 
 const useStyles = makeStyles(theme => ({
   root: {
     background: theme.palette.primary.main
-  },
-  position: {
-    [theme.breakpoints.between("md", "lg")]: {
-      position: "relative",
-      top: 100,
-      right: 100
-    },
-    [theme.breakpoints.only("sm")]: {
-      position: "relative",
-      top: 30,
-      right: 0
-    }
   },
   left: {
     position: 'absolute',
@@ -37,10 +29,10 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     left: 0,
     width: 100,
-    height: 100,
+    height: 150,
     '& div:nth-child(1)': {
       width: 100,
-      height: 100,
+      height: 150,
       background: '#fff',
       transition: 'all 1s ease',
       boxShadow: '0 0 0 0 #777',
@@ -70,10 +62,10 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     right: 0,
     width: 100,
-    height: 100,
+    height: 150,
     '& div:nth-child(1)': {
       width: 100,
-      height: 100,
+      height: 150,
       background: '#fff',
       transition: 'all 1s ease',
       boxShadow: '0 0 0 0 #777',
@@ -99,11 +91,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const svg = require("../../../images/shadowed-logo.svg");
 const imageFomina = require("../../../images/fomina.jpg");
 const imageDiv = require("../../../images/div.png");
-const time = "18:00"; //moment().fromNow();
-const date = "02.11";
 
 function SampleNextArrow(props) {
   const classes = useStyles({});
@@ -116,7 +105,7 @@ function SampleNextArrow(props) {
       <div>
         <KeyboardArrowRight style={{
           position: 'absolute',
-          top: 40,
+          top: 55,
           left: 40
         }} />
       </div>
@@ -136,7 +125,7 @@ function SamplePrevArrow(props) {
       <div>
         <KeyboardArrowLeft style={{
           position: 'absolute',
-          top: 40,
+          top: 55,
           left: 40
         }} />
       </div>
@@ -144,6 +133,41 @@ function SamplePrevArrow(props) {
     </div>
   );
 }
+
+const events = [
+  {
+    _id: "a",
+    avatarSrc: imageFomina,
+    title: "Весь мир театр",
+    time: moment().add(1, 'days'),
+    href: "/google.com",
+    bgColor: "rgba(22, 61, 91, 0.35)",
+    altAvatar: "avatar teacher",
+    color: "inherit",
+    event: "мастер-класс",
+    width: 200
+  },
+  {
+    _id: "b",
+    title: "С приветом по планетам",
+    time: moment().add(5, 'days'),
+    href: "/google.com",
+    bgColor: "rgba(22, 61, 91, 0.35)",
+    color: "inherit",
+    event: "лекция"
+  },
+  {
+    _id: "c",
+    bgImg: imageDiv,
+    title: "Быть или не быть",
+    time: moment().add(10, 'days'),
+    href: "/google.com",
+    altImg: "course",
+    color: "inherit",
+    event: "курс",
+    width: 300
+  }
+];
 
 export const ScreenThree = ({ ...props }) => {
   const classes = useStyles({});
@@ -183,88 +207,40 @@ export const ScreenThree = ({ ...props }) => {
     prevArrow: <SamplePrevArrow />
   };
 
-  const events = [
-    {
-      _id: "a",
-      avatarSrc: imageFomina,
-      title: "Весь мир театр",
-      time: "12:00",
-      date: "02.11",
-      href: "/google.com",
-      bgColor: "rgba(22, 61, 91, 0.35)",
-      altAvatar: "avatar teacher",
-      color: "inherit",
-      event: "мастер-класс",
-      width: 200
-    },
-    {
-      _id: "b",
-      title: "С приветом по планетам",
-      time: "12:00",
-      date: "02.11",
-      href: "/google.com",
-      bgColor: "rgba(22, 61, 91, 0.35)",
-      color: "inherit",
-      event: "лекция"
-    },
-    {
-      _id: "c",
-      bgImg: imageDiv,
-      title: "Быть или не быть",
-      time: "12:00",
-      date: "02.11",
-      href: "/google.com",
-      altImg: "course",
-      color: "inherit",
-      event: "курс",
-      width: 300
-    }
-  ];
-
   return (
     <>
       <Hidden xsDown>
-        <Container mdSize={30}>
-          <Typography variant="h3" component="h2">
-            Курсы
-          </Typography>
-        </Container>
-        <Spacing size={5} />
-        {/* <Slider {...settingsOne}>
-          {events.map(oneEvent => (
-            <div
-              key={oneEvent._id}
-              style={{
-                width: oneEvent.width,
-              }}
-            >
-              <Timeline {...oneEvent} />
-            </div>
-          ))}
-        </Slider> */}
-        <Calendar />
-        <Spacing size={5} />
-        <Container mdSize={30}>
-          <Typography variant="h3" component="h2">
-            События
-          </Typography>
-        </Container>
-        <Spacing size={5} />
-        <Slider {...settingsTwo}>
-          {events.map(oneEvent => (
-            <div
-              key={oneEvent._id}
-              style={{
-                width: oneEvent.width,
-              }}
-            >
-              <Timeline {...oneEvent} />
-            </div>
-          ))}
-        </Slider>
-        <Spacing size={5} />
+        <div style={{ height: '100vh' }}>
+          <Container smSize={20} mdSize={80}>
+            <Typography variant="h3" component="h2">
+              Курсы
+            </Typography>
+          </Container>
+          <Spacing size={5} />
+          <Calendar />
+          <Spacing size={5} />
+          <Container smSize={20} mdSize={80}>
+            <Typography variant="h3" component="h2">
+              События
+            </Typography>
+          </Container>
+          <Spacing size={5} />
+          <Slider {...settingsTwo}>
+            {events.map(oneEvent => (
+              <div
+                key={oneEvent._id}
+                style={{
+                  width: oneEvent.width,
+                }}
+              >
+                <CalendarCard {...oneEvent} />
+              </div>
+            ))}
+          </Slider>
+        </div>
+        {/* <Spacing size={5} /> */}
       </Hidden>
-      <Hidden smUp />
+      {/* <Hidden smUp /> */}
     </>
   );
 };

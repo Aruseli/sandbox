@@ -1,15 +1,23 @@
 import React, {useState} from 'react';
 
-import { YMaps, Map, Placemark, GeolocationControl, Panorama } from 'react-yandex-maps';
-
 import {CardContacts} from "./card-contacts";
 import { Button, makeStyles } from '@material-ui/core';
 
+import {MyMap} from "./map";
+
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: '#fff',
-    borderRadius: 0,
-    boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.2), 0px 1px 3px 0px rgba(0,0,0,0.14), 0px 2px 1px -2px rgba(0,0,0,0.12)'
+    '&,&:focus,&:active': {
+      backgroundColor: '#1e97ff',
+      color: '#fff',
+      borderRadius: 0,
+      boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.2), 0px 1px 3px 0px rgba(0,0,0,0.14), 0px 2px 1px -2px rgba(0,0,0,0.12)',
+    },
+    '&:disabled': {
+      backgroundColor: '#bbbbbb',
+      color: '#fff',
+      borderRadius: 0,
+    },
   },
   margin: {
     marginBottom: 10
@@ -80,38 +88,65 @@ const address = {
 
 export const Contacts = ({...props}) => {
   const [changeCoords, setCoords] = useState({coord : 'moscow'}); 
-  const [changeAddress, setAddress] = useState({address: 'moscow'});
   const classes = useStyles({});
 
   return (
     <>
-      <YMaps>
+      <div style={{
+        position: 'relative',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh'
+      }}>
+
+      {/* filter */}
         <div style={{
           position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
+          width: '100%', 
           height: '100%',
+          filter: 'blur(2px) grayscale(100%)',
+        }}>
+          <div style={{
+            width: '100vw',
+            height: '100vh'
           }}>
-          <Map
-            state={
-              propertiesMap[changeCoords.coord].mapProp
-            }
-            width="100%"
-            height="100%"
-          >
-            <Placemark
-              geometry={
-                propertiesMap[changeCoords.coord].mapProp.center
-              }
-              properties={{
-                balloonContentBody: "Your address"
-              }}
+            <MyMap 
+              state={propertiesMap[changeCoords.coord].mapProp}
+              geometry={propertiesMap[changeCoords.coord].mapProp.center}
             />
-            <GeolocationControl options={{ float: "left" }} />
-          </Map>
+          </div>
         </div>
-      </YMaps>
+
+        {/* scale */}
+        <div style={{
+          position: 'absolute',
+          width: '100vw',
+          height: '100vh',
+          top: 0,
+          left: 0
+        }}>
+          <div style={{
+            width: '30vw',
+            height: '100%',
+            overflow: 'hidden',
+            position: 'relative',
+            left: '30%',
+            boxShadow: '0 0 15px 10px #c5c4c4'
+          }}>
+            <div style={{
+              width: '100%',
+              height: '100%',
+              transform: 'scale(1.2)',
+            }}>
+              <MyMap 
+                  state={propertiesMap[changeCoords.coord].mapProp}
+                  geometry={propertiesMap[changeCoords.coord].mapProp.center}
+                />
+            </div>
+          </div>
+        </div>
+      </div>
       <div style={{
         position: 'absolute',
         top: '15%',
@@ -158,8 +193,8 @@ export const Contacts = ({...props}) => {
           transform: 'translateY(-10%)',
           padding: 15,
           }}>
-          <Button className={classes.margin} classes={{root: classes.root}} variant="contained" size='large' onClick={() => setCoords({coord: 'moscow'})}>Москва</Button>
-          <Button className={classes.margin} classes={{root: classes.root}} variant="contained" size='large' onClick={() => setCoords({coord: 'novosib'})}>Новосибирск</Button>
+          <Button className={classes.margin} classes={{root: classes.root}} variant="contained" size='large' onClick={() => setCoords({coord: 'moscow'})} disabled={changeCoords.coord === 'moscow'}>Москва</Button>
+          <Button className={classes.margin} classes={{root: classes.root}} variant="contained" size='large' onClick={() => setCoords({coord: 'novosib'})} disabled={changeCoords.coord === 'novosib'}>Новосибирск</Button>
          </div>
       </div>
     </>

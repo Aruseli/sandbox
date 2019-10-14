@@ -76,14 +76,3 @@ export const theme = createMuiTheme({
     }
   }
 });
-
-export const styleTheme = theme =>
-  createMuiTheme(
-    _.merge({}, theme, {
-      palette: {
-        primary: {
-          main: 'red'
-        }
-      }
-    })
-  );

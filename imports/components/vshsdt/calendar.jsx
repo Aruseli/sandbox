@@ -1,18 +1,14 @@
-import { makeStyles, Typography, Hidden, Grid } from "@material-ui/core";
-
-import {KeyboardArrowLeft, KeyboardArrowRight} from "@material-ui/icons";
-
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { makeStyles, Hidden, Grid } from "@material-ui/core";
 
 import React from "react";
 
-import { Spacing } from "../spacing";
-import {Container} from "../container";
+import '../../i18n';
 
-import { Timeline } from "./timeline";
-import {Filter} from "./filter";
+import moment from "moment";
+
+import { Spacing } from "../spacing";
+
+import {FilteredCard} from "./filtered-card";
 import { relative } from "path";
 
 const useStyles = makeStyles(theme => ({
@@ -40,57 +36,49 @@ const useStyles = makeStyles(theme => ({
 const svg = require("../../../images/shadowed-logo.svg");
 const imageFomina = require("../../../images/fomina.jpg");
 const imageDiv = require("../../../images/div.png");
-const time = "18:00"; //moment().fromNow();
-const date = "02.11";
 
-export const Calendar = ({ ...props }) => {
-  const classes = useStyles({});
-  // const theme = useTheme();
-  // const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
-
-  const events = [
+const events = [
   {
     _id: "a",
     avatarSrc: imageFomina,
     title: "Весь мир театр",
-    time: "12:00",
-    date: "02.11",
+    time: moment().add(-3, 'days'),
     href: "/google.com",
     bgColor: "rgba(22, 61, 91, 0.35)",
     altAvatar: "avatar teacher",
     color: "inherit",
     event: "мастер-класс",
-    width: 2
+    width: 2,
+    completed: 30
   },
   {
     _id: "b",
     title: "С приветом по планетам",
-    time: "12:00",
-    date: "02.11",
+    time: moment().add(-5, 'days'),
     href: "/google.com",
     bgColor: "rgba(22, 61, 91, 0.35)",
     color: "inherit",
     event: "лекция",
-    width: 4
+    width: 4,
+    completed: 50
   },
   {
     _id: "c",
     bgImg: imageDiv,
     title: "Быть или не быть",
-    time: "12:00",
-    date: "02.11",
+    time: moment().add(-6, 'days'),
     href: "/google.com",
     altImg: "course",
     color: "inherit",
     event: "курс",
-    width: 3
+    width: 3,
+    completed: 60
   },
   {
     _id: "d",
     avatarSrc: imageFomina,
     title: "Весь мир театр",
-    time: "12:00",
-    date: "02.11",
+    time: moment().add(-2, 'days'),
     href: "/google.com",
     bgColor: "rgba(22, 61, 91, 0.35)",
     altAvatar: "avatar teacher",
@@ -101,79 +89,82 @@ export const Calendar = ({ ...props }) => {
   {
     _id: "e",
     title: "С приветом по планетам",
-    time: "12:00",
-    date: "02.11",
+    time: moment().add(-1, 'days'),
     href: "/google.com",
     bgColor: "rgba(22, 61, 91, 0.35)",
     color: "inherit",
     event: "лекция",
-    width: 3
+    width: 3,
+    completed: 10
   },
-  ];
+];
 
-  const events2 = [
+const events2 = [
+  {
+    _id: "a",
+    bgImg: imageDiv,
+    title: "Быть или не быть",
+    time: moment().add(-4, 'days'),
+    href: "/google.com",
+    altImg: "course",
+    color: "inherit",
+    event: "курс",
+    width: 4,
+    completed: 40
+  },
+  {
+    _id: "b",
+    avatarSrc: imageFomina,
+    title: "Весь мир театр",
+    time: moment().add(-2, 'days'),
+    href: "/google.com",
+    bgColor: "rgba(22, 61, 91, 0.35)",
+    altAvatar: "avatar teacher",
+    color: "inherit",
+    event: "мастер-класс",
+    width: 3,
+    completed: 20
+  },
+  {
+    _id: "c",
+    title: "С приветом по планетам",
+    time: moment().add(-6, 'days'),
+    href: "/google.com",
+    bgColor: "rgba(22, 61, 91, 0.35)",
+    color: "inherit",
+    event: "лекция",
+    width: 2,
+    completed: 60
+  },
+  {
+    _id: "d",
+    avatarSrc: imageFomina,
+    title: "Весь мир театр",
+    time: moment().add(3, 'days'),
+    href: "/google.com",
+    bgColor: "rgba(22, 61, 91, 0.35)",
+    altAvatar: "avatar teacher",
+    color: "inherit",
+    event: "мастер-класс",
+    width: 4,
+  },
+  {
+    _id: "e",
+    title: "С приветом по планетам",
+    time: moment().add(-10, 'days'),
+    href: "/google.com",
+    bgColor: "rgba(22, 61, 91, 0.35)",
+    color: "inherit",
+    event: "лекция",
+    width: 2,
+    completed: 100
+  },
+];
 
-    {
-      _id: "a",
-      bgImg: imageDiv,
-      title: "Быть или не быть",
-      time: "12:00",
-      date: "02.11",
-      href: "/google.com",
-      altImg: "course",
-      color: "inherit",
-      event: "курс",
-      width: 4
-    },
-    {
-      _id: "b",
-      avatarSrc: imageFomina,
-      title: "Весь мир театр",
-      time: "12:00",
-      date: "02.11",
-      href: "/google.com",
-      bgColor: "rgba(22, 61, 91, 0.35)",
-      altAvatar: "avatar teacher",
-      color: "inherit",
-      event: "мастер-класс",
-      width: 3
-    },
-    {
-      _id: "c",
-      title: "С приветом по планетам",
-      time: "12:00",
-      date: "02.11",
-      href: "/google.com",
-      bgColor: "rgba(22, 61, 91, 0.35)",
-      color: "inherit",
-      event: "лекция",
-      width: 2
-    },
-    {
-      _id: "d",
-      avatarSrc: imageFomina,
-      title: "Весь мир театр",
-      time: "12:00",
-      date: "02.11",
-      href: "/google.com",
-      bgColor: "rgba(22, 61, 91, 0.35)",
-      altAvatar: "avatar teacher",
-      color: "inherit",
-      event: "мастер-класс",
-      width: 4
-    },
-    {
-      _id: "e",
-      title: "С приветом по планетам",
-      time: "12:00",
-      date: "02.11",
-      href: "/google.com",
-      bgColor: "rgba(22, 61, 91, 0.35)",
-      color: "inherit",
-      event: "лекция",
-      width: 2
-    },
-    ];
+export const Calendar = ({ ...props }) => {
+  const classes = useStyles({});
+  // const theme = useTheme();
+  // const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
   <>
@@ -187,18 +178,10 @@ export const Calendar = ({ ...props }) => {
       >
         {events.map(oneEvent => (
         <Grid item 
-        // style={{ width: `${oneEvent.width}%` }}
           xs={oneEvent.width}
           key={oneEvent._id}
         >
-          <div style={{
-            width: '100%',
-            height: '100%',
-            position: 'relative'
-          }}>
-            <Timeline {...oneEvent} />
-            <Filter {...oneEvent} />  
-          </div>
+          <FilteredCard {...oneEvent} />
         </Grid>
         ))}  
       </Grid>
@@ -210,46 +193,13 @@ export const Calendar = ({ ...props }) => {
           <Grid item xs={oneEvent.width}
             key={oneEvent._id}
           >
-            <div style={{
-              width: '100%',
-              height: '100%',
-              position: 'relative'
-            }}>
-              <Timeline {...oneEvent} />
-              <Filter {...oneEvent} />
-            </div>
+            <FilteredCard {...oneEvent} />
           </Grid>
         ))} 
       </Grid>
-      <div style={{
-        position: 'absolute',
-        top:-10,
-        left: '10%',
-        width: 3,
-        height: 225,
-        backgroundColor: 'red'
-      }}>
       </div>
-    </div>
     </Hidden>
     <Hidden smUp />
   </>
   );
 };
-
-{/* <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '30%',
-              height: '100',
-              filter: 'sepia(50%)',
-              overflow: 'hidden',
-            }}>
-              <div style={{
-                width: '100%',
-                height: '100%'
-              }}>
-                <Timeline {...oneEvent} />
-              </div>
-            </div> */}

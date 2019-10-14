@@ -1,149 +1,33 @@
-import { makeStyles, Typography, Hidden, List, ListItem, ListItemText, Grid, ListItemAvatar } from "@material-ui/core";
-
-import Link from 'next/link';
-
 import React from "react";
 
-import { Subscribe } from "./subscribe";
+import { YMaps, Map, Placemark, GeolocationControl, Panorama } from 'react-yandex-maps';
 
-const useStyles = makeStyles(theme => ({
-}));
+const map = require("../../../images/map.png");
 
-const fb = require("../../../images/fb.svg");
-const vk = require("../../../images/vk.svg");
-const inst = require("../../../images/instagram.svg");
-
-export const Map = ({ ...props }) => {
-  const classes = useStyles({});
-  // const theme = useTheme();
-  // const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
-
-  return (
-  <div style={{
-    backgroundColor: '#f7a22b',
-    paddingTop: 200,
-  }}>
-    <Grid 
-      container
-      direction="row"
-      justify="center"
-      alignItems="center"
-      style={{
-        position: 'relative', 
-        width: '100%',
+export const MyMap = ({state, geometry}) => {
+  return(
+    <YMaps>
+      <div style={{
+        position: 'absolute',
         top: 0,
-        left: 0
-      }}
-    >
-      <Grid item xs={8}>
-        <Grid 
-          container
-          direction="row"
-          justify="flex-start"
-          alignItems="center"
+        left: 0,
+        width: '100%',
+        height: '100%',
+        }}>
+        <Map
+          state={state}
+          width="100%"
+          height="100%"
         >
-          <Grid item>
-            <List>
-              <ListItem>
-                <ListItemText primary='Кампус' secondary={
-                  <>
-                    <Link href='https://styleschool.ru/'><a style={{
-                      color: '#000'
-                    }}>Москва</a></Link>
-                    <br />
-                    <Link href='https://novosib.styleschool.ru/'><a style={{
-                      color: '#000'
-                    }}>Новосибирск</a></Link>
-                  </>
-                } />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary='Адрес' secondary="г. Москва, Проспект Мира, дом 101, стр. 1, 600 офис" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary='Партнеры' secondary={
-                  <div>
-                    Российский государственный социальный университет<br />
-                    Российский государственный университет туризма и сервиса
-                  </div>
-                } />
-              </ListItem>
-            </List>
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item xs={4}>
-        <Grid
-          container
-          direction="row"
-          justify="flex-end"
-          alignItems="center"
-        >
-          <Grid item>
-            <List>
-              <ListItem>
-                <ListItemText primary='Телефон' secondary={
-                  <div>
-                    +7 (495) 221-89-35<br />
-                    8 (800) 550-78-93
-                  </div>
-                } />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary='Время работы' secondary='Пн - Пт с 10:00 до 19:00 (мск)' />
-              </ListItem>
-              <ListItem>
-                <ListItemAvatar>
-                  <Link href='https://www.facebook.com/styleschool.ru/'>
-                    <a>
-                      <img src={fb} alt='facebook' style={{
-                        width: 20,
-                        height: 20,
-                        marginRight: 20
-                      }} />
-                    </a>
-                  </Link>
-                  <Link href='https://www.instagram.com/styleschool_msk/'>
-                    <a>
-                      <img src={inst} alt='instagram' style={{
-                        width: 20,
-                        height: 20,
-                        marginRight: 20
-                      }} />
-                    </a>
-                  </Link>
-                  <Link href='https://vk.com/stylemsk'>
-                    <a>
-                      <img src={vk} alt='vkontakte' style={{
-                        width: 20,
-                        height: 20
-                      }} />
-                    </a>
-                  </Link>
-                </ListItemAvatar>
-              </ListItem>
-            </List>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
-    <Grid 
-      container
-      direction="column"
-      justify="center"
-      alignItems="center"
-      spacing={4} style={{
-        height: '30vh'
-      }}>
-      <Grid item>
-        <Typography variant='h6' component="h2">Подписаться на новости факультета</Typography>
-      </Grid>
-      <Grid item style={{
-        position: 'relative'
-      }}>
-        <Subscribe />            
-      </Grid>
-    </Grid>
-  </div>
-  );
-};
+          <Placemark
+            geometry={geometry}
+            properties={{
+              balloonContentBody: "Your address"
+            }}
+          />
+          <GeolocationControl options={{ float: "left" }} />
+        </Map>
+      </div>
+    </YMaps> 
+  )
+}

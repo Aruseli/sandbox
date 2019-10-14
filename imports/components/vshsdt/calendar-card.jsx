@@ -2,11 +2,10 @@ import Link from 'next/link';
 
 import React from 'react';
 
-export const Timeline = ({
+export const CalendarCard = ({
   avatarSrc = null,
   title,
   time,
-  date,
   href,
   bgColor,
   bgImg,
@@ -30,7 +29,7 @@ export const Timeline = ({
         }}>
           <div
             style={{
-              height: 100,
+              height: 150,
               width: '100%',
               backgroundColor: bgColor || 'transparent',
               position: 'relative',
@@ -98,7 +97,7 @@ export const Timeline = ({
                 fontSize: 11,
               }}>
               <p>
-                {time}&ensp;{date}
+                {time.fromNow()}
               </p>
             </div>
           </div>

@@ -13,7 +13,7 @@ import {Container} from "../container";
 
 import { ReviewFoto } from "./review-foto";
 import { ReviewText } from "./review-text";
-import { Map } from "./map";
+import { Footer } from "./footer";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -122,64 +122,62 @@ export const ScreenFive = ({ ...props }) => {
   ];
 
   return (
-  <>
-    <Hidden xsDown>
-    <Container mdSize={30}>
-      <Typography variant="h4" component="h2">
-        Отзывы о нас
-      </Typography>
-    </Container>
-    <Spacing size={25} />
-    <div style={{
-      height: 3,
-      position: 'relative',
-      backgroundColor: '#ff0000',
-      zIndex: 333
-    }}>
-      <div
-        className={classes.slickSlider}
-        style={{
-          position: 'absolute',
-          width: '80%',
-          height: 300,
-          left: '10%',
-          top: -150,
-        }}
-      >    
-        <Slider {...settings}>
-          {reviewsFoto.map(oneReviewFoto => (
-          <div
-            key={oneReviewFoto._id}
-          >
-            <ReviewFoto {...oneReviewFoto} />
-          </div>
-          ))}
-        </Slider>
-      </div>
-      <Grid container justify="center" alignItems="center" style={{
-        position: 'absolute',
-        width: '80%',
-        height: 560,
-        left: '20%',
-        top: -300
-      }}>
-        <Grid item xs={6} sm={6} md={4} lg={3} style={{
-
+    <>
+      <Hidden xsDown>
+        <Container smSize={20} mdSize={80}>
+          <Typography variant="h3" component="h2">
+            Отзывы о нас
+          </Typography>
+        </Container>
+        <Spacing size={25} />
+        <div style={{
+          height: 3,
+          position: 'relative',
+          backgroundColor: '#ff0000',
+          zIndex: 333
         }}>
-          <ReviewText
-            name='Эмилия Зотова'
-            text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac dignissim ex, sit amet efficitur orci. In ut risus non nisi commodo ultrices. Ut tortor turpis, suscipit vel leo ac, tincidunt posuere felis.'
-            href='https://styleschool.ru/style4make'
-            color= "inherit"
-            course= "Стилистика для визажистов"
-            date= "02.11"
-          />
-        </Grid>
-      </Grid>
-    </div>
-    <Map />
+          <div
+            className={classes.slickSlider}
+            style={{
+              position: 'absolute',
+              width: '80%',
+              height: 300,
+              left: '10%',
+              top: -150,
+            }}
+          >    
+            <Slider {...settings}>
+              {reviewsFoto.map(oneReviewFoto => (
+              <div
+                key={oneReviewFoto._id}
+              >
+                <ReviewFoto {...oneReviewFoto} />
+              </div>
+              ))}
+            </Slider>
+          </div>
+          <Grid container justify="center" alignItems="center" style={{
+            position: 'absolute',
+            width: '80%',
+            height: 560,
+            left: '20%',
+            top: -300
+          }}>
+            <Grid item xs={6} sm={6} md={4} lg={3} style={{}}>
+              <ReviewText
+                name='Эмилия Зотова'
+                text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac dignissim ex, sit amet efficitur orci. In ut risus non nisi commodo ultrices. Ut tortor turpis, suscipit vel leo ac, tincidunt posuere felis.'
+                href='https://styleschool.ru/style4make'
+                color= "inherit"
+                course= "Стилистика для визажистов"
+                date= "02.11"
+              />
+            </Grid>
+          </Grid>
+        </div>
+      <Footer paddingTop='200' />
     </Hidden>
-    <Hidden smUp />
+    {/* <Hidden smUp /> */}
   </>
   );
 };

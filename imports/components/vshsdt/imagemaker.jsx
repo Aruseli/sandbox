@@ -33,7 +33,10 @@ export const Imagemaker = ({}) => {
           <LeftBlocks />
         </Grid>
         <Grid item xs={5}>
-          <ProgrammBlock />
+          <ProgrammBlock style={{
+            marginLeft: 20,
+            marginRight: 20
+          }} />
         </Grid>
       </Grid>
       <Footer paddingTop='100' />

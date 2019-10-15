@@ -19,9 +19,9 @@ import { BlockThree } from './programm-blocks/block-three';
 import { BlockFour } from './programm-blocks/block-four';
   
   
-export const ProgrammBlock = ({}) => {
+export const ProgrammBlock = ({style}) => {
   return (
-    <Paper>
+    <Paper style={style}>
       <List>
         <BlockOne 
           header='1, 2, 3 месяцы: 1-й уровень. Основы имиджмейкинга (Style Basic)' 

@@ -8,9 +8,9 @@ export default () => (
         <div>picture</div>
       </a>
     </Link>
-    <Link href="/_sandbox/use-query">
+    <Link href="/_sandbox/use-url-state">
       <a>
-        <div>use-query</div>
+        <div>use-url-state</div>
       </a>
     </Link>
     <Link href="/_sandbox/mui-ssr">
@@ -26,6 +26,31 @@ export default () => (
     <Link href="/_sandbox/graphiql">
       <a>
         <div>graphiql</div>
+      </a>
+    </Link>
+    <Link href="/_sandbox/graph">
+      <a>
+        <div>graph</div>
+      </a>
+    </Link>
+    <Link href="/_sandbox/react-spring-scroll">
+      <a>
+        <div>react-spring-scroll</div>
+      </a>
+    </Link>
+    <Link href="/_sandbox/react-spring-sensor">
+      <a>
+        <div>react-spring-sensor</div>
+      </a>
+    </Link>
+    <Link href="/_sandbox/react-spring-sensor-trail">
+      <a>
+        <div>react-spring-sensor-trail</div>
+      </a>
+    </Link>
+    <Link href="/_sandbox/image-size-sensor">
+      <a>
+        <div>image-size-sensor</div>
       </a>
     </Link>
   </div>

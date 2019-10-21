@@ -175,7 +175,7 @@ export const ScreenFive = ({ ...props }) => {
             </Grid>
           </Grid>
         </div>
-      <Footer paddingTop='200' />
+      <Footer paddingTop={200} />
     </Hidden>
     {/* <Hidden smUp /> */}
   </>

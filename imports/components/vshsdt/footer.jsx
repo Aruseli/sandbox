@@ -80,7 +80,7 @@ export const Footer = ({ paddingTop, ...props }) => {
           <Grid item>
             <List>
               <ListItem>
-                <ListItemText primary='Телефон' secondary={
+                <ListItemText component="div" primary='Телефон' secondary={
                   <div>
                     +7 (495) 221-89-35<br />
                     8 (800) 550-78-93

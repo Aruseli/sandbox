@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {BlocksPosition} from '../left-block-imagemaker/blocks-position';
+import {ImageResponsiveSensor} from '../../../sandbox/image-responsive-sensor';
 
 export const Picture = ({
   left,
@@ -8,17 +9,22 @@ export const Picture = ({
   width,
   height,
   src,
-  alt
+  alt,
+  style,
+  WrapComponent,
+  wrapComponentProps,
+  onClick
 }) => {
   return (
-    <BlocksPosition left={left} top={top} width={width} height={height}> 
-      <div style={{
-        width: '100%'
-      }}>
-        <img src={src} alt={alt} style={{
-          width: '100%'
-        }} />
-      </div>  
+    <BlocksPosition
+      left={left} top={top} width={width} height={height} style={style}
+      WrapComponent={WrapComponent}
+      wrapComponentProps={wrapComponentProps}
+      onClick={onClick}
+    > 
+      <ImageResponsiveSensor>
+        <img src={src} alt={alt} /> 
+      </ImageResponsiveSensor>
     </BlocksPosition>
   );
 }

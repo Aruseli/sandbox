@@ -74,5 +74,8 @@
   },
   "license": "ISC",
   "keywords": [],
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "fslightbox-react": "^1.4.2"
+  }
 }

@@ -14,9 +14,22 @@ export const Text = ({
   width,
   height,
   children,
+  style,
+  WrapComponent,
+  wrapComponentProps,
+  onClick
 }) => {
   return (
-    <BlocksPosition left={left} top={top} width={width} height={height}>
+    <BlocksPosition 
+      left={left} 
+      top={top} 
+      width={width} 
+      height={height} 
+      style={style}
+      WrapComponent={WrapComponent}
+      wrapComponentProps={wrapComponentProps}
+      onClick={onClick}
+    >
       <Grid
         container
         justify='center'

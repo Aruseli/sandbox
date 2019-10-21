@@ -10,10 +10,6 @@ import {
 
 import React from 'react';
 
-import { animated as a, interpolate } from 'react-spring';
-
-import { Container } from '../container';
-
 import {LeftBlocks} from './imagemaker-left-blocks';
 import { ProgrammBlock } from './programm-block';
 import { Footer } from './footer';
@@ -39,7 +35,7 @@ export const Imagemaker = ({}) => {
           }} />
         </Grid>
       </Grid>
-      <Footer paddingTop='100' />
+      <Footer paddingTop={100} />
     </>
   );
 }

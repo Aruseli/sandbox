@@ -1,25 +1,33 @@
 import React from 'react';
+import { animated as a } from 'react-spring';
+
+const _WrapComponent = ({ children }) => children;
 
 export const BlocksPosition = ({
   left,
   top,
   width,
   height,
-  children
+  children,
+  style,
+  WrapComponent = _WrapComponent,
+  wrapComponentProps,
+  onClick,
 }) => {
 
   return (
-    <div style={{
+    <a.div style={{
       position: 'absolute',
       left: `calc(${left} - (${width} / 2))`,
       top: `calc(${top} - (${height} / 2))`,
-      backgroundColor: 'red',
       width: width,
       height: height,
-      overflow: 'hidden'
-    }}>
-      {children}
-    </div>
+      ...style
+    }} onClick={onClick}>
+      <WrapComponent {...wrapComponentProps}>
+        {children}
+      </WrapComponent>
+    </a.div>
   );
 }
   

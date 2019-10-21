@@ -21,8 +21,8 @@ import { BlockFour } from './programm-blocks/block-four';
   
 export const ProgrammBlock = ({style}) => {
   return (
-    <Paper style={style}>
-      <List>
+    <Paper style={style} elevation={0}>
+      <List disablePadding>
         <BlockOne 
           header='1, 2, 3 месяцы: 1-й уровень. Основы имиджмейкинга (Style Basic)' 
           duration="120 ак.ч." 

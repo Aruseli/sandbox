@@ -26,7 +26,8 @@ export const theme = createMuiTheme({
     },
     h4: {
       fontFamily,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      textTransform: 'uppercase'
     },
     h5: {
       fontFamily,

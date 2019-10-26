@@ -6,7 +6,7 @@ import {ArrowBackIos, ArrowForwardIos} from '@material-ui/icons';
 
 import { animated as a, interpolate } from 'react-spring';
 
-import {ImageResponsiveSensor} from '../../sandbox/image-responsive-sensor';
+import { ChildrenResponsive } from '../../packages/children-responsive';
 import { SpringContext } from '../../../pages/imagemaker';
 
 const comments = [
@@ -117,9 +117,9 @@ export const Comments = ({}) => {
                 : 'brightness(1)',
             }}
           >
-            <ImageResponsiveSensor>
+            <ChildrenResponsive>
               <img src={value.src} alt={value.alt} style={{width: '100%'}} />
-            </ImageResponsiveSensor>
+            </ChildrenResponsive>
           </div>
         })}
       </Grid>

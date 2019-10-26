@@ -1,3 +1,5 @@
+// @flow
+
 import React, { useContext, useCallback } from 'react';
 
 import { useTheme, Typography, Grid } from '@material-ui/core';
@@ -22,7 +24,6 @@ export default wrapPage(() => {
       <VisibilitySensor
         offset={{ top: 100, bottom: 100 }}
         onChange={isVisible => {
-          console.log(isVisible);
           setVis1({ opacity: isVisible ? 1 : 0 });
         }}
       >

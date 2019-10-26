@@ -1,12 +1,23 @@
 # sandbox
 
+- [x] flow types
+- [x] api tested
+- [x] graphiql for out graph concept
+- [x] packages to separated publish
+  - [x] google/yandex/facebook analitis
+  - [x] gql ssr hybrid query/subscriptions
+  - [x] use-url-state
+  - [x] children-responsive
+  - [ ] nextjs-passportjs
+  - [ ] react-spring-reveals
+
 ## how
 
 ```sh
 git clone url sandbox
 cd sandbox
 npm i
-npm run dev
+PORT=3000 npm run dev
 ```
 
 ## env
@@ -18,9 +29,28 @@ In process environment must be defined:
 ```sh
 GQL_SECRET='<x-hasura-admin-secret>'
 GQL_PATH='<gqlurl>'
+
 FB_TOKEN=''
 GA_TOKEN=''
 YM_TOKEN=''
+
+CONTAINER_NAME=''
+GIT_REGISTRY=''
+GIT_REPOSITORY=''
+GIT_USERNAME=''
+GIT_PASSWORD=''
+
+PORT=3000
+
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+GOOGLE_CALLBACK="https://<url>/api/auth/google/callback"
+```
+
+Optional environment:
+
+```sh
+PATH_PREFIX='/my-repo'
 ```
 
 ## proxy
@@ -126,3 +156,26 @@ export default wrapPage(() => {
 ## graphiql with explorer
 
 Example on `/_sandbox/graphiql`.
+
+## graph explorer
+
+Viewer based on nodes, links and props mutated data.
+
+## children-responsive
+
+- [x] js responsive for children
+- [ ] js move content based on mouse move
+
+```jsx
+import { ChildrenResponsive } from '../../imports/packages/children-responsive';
+
+// Picture
+<ChildrenResponsive>
+  <Picture images={ri.images} src={ri.src} />
+</ChildrenResponsive>
+
+// Or and markup
+<ChildrenResponsive>
+  <div style={{ display: 'inline-block' }}>inline-block</div>
+</ChildrenResponsive>
+```

@@ -1,3 +1,6 @@
+// @flow
+
+import React from 'react';
 import Link from 'next/link';
 import 'normalize.css';
 
@@ -48,9 +51,24 @@ export default () => (
         <div>react-spring-sensor-trail</div>
       </a>
     </Link>
-    <Link href="/_sandbox/image-size-sensor">
+    <Link href="/_sandbox/spring-reveals">
       <a>
-        <div>image-size-sensor</div>
+        <div>spring-reveals</div>
+      </a>
+    </Link>
+    <Link href="/_sandbox/children-responsive">
+      <a>
+        <div>children-responsive</div>
+      </a>
+    </Link>
+    <Link href="/_sandbox/auth">
+      <a>
+        <div>auth</div>
+      </a>
+    </Link>
+    <Link href="/_sandbox/ssr-use-router">
+      <a>
+        <div>ssr-use-router</div>
       </a>
     </Link>
   </div>

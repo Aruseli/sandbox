@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "repository": "ivansglazunov/sandbox",
   "scripts": {
-    "dev": "next",
+    "flow": "flow",
+    "dev": "next -p $PORT",
     "build": "next build",
-    "start": "next start",
-    "export": "next export"
+    "start": "next start -p $PORT",
+    "export": "next export",
+    "docker": "npm run build && npm start"
   },
   "dependencies": {
     "@apollo/react-hooks": "3.1.1",
@@ -20,9 +22,12 @@
     "apollo-client": "2.6.4",
     "apollo-link": "1.2.13",
     "apollo-link-ws": "1.0.19",
+    "axios": "^0.19.0",
+    "axios-hooks": "^1.4.1",
     "chance": "1.1.0",
     "dotenv": "^8.1.0",
     "dotenv-webpack": "^1.7.0",
+    "express": "^4.17.1",
     "graphiql": "^0.14.2",
     "graphiql-explorer": "^0.4.4",
     "graphql": "^14.5.7",
@@ -35,16 +40,22 @@
     "imagemin-optipng": "^7.0.0",
     "imagemin-svgo": "^7.0.0",
     "jimp": "^0.8.4",
+    "js-cookie": "^2.2.1",
     "lqip-loader": "^2.2.0",
     "moment": "^2.24.0",
     "material-color-hash": "^0.1.6",
     "next": "9.0.6",
     "next-compose-plugins": "2.2.0",
     "next-optimized-images": "2.5.3",
+    "next-server": "^9.0.5",
     "next-with-apollo": "latest",
     "node-fetch": "latest",
+    "nookies": "^2.0.8",
     "normalize.css": "8.0.1",
     "notistack": "^0.9.2",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
     "re-resizable": "^6.0.0",
     "react": "16.9.0",
     "react-dom": "^16.9.0",
@@ -76,6 +87,10 @@
   "keywords": [],
   "description": "",
   "devDependencies": {
-    "fslightbox-react": "^1.4.2"
+    "fslightbox-react": "^1.4.2",
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-flow": "^7.0.0",
+    "flow-bin": "^0.109.0"
   }
 }

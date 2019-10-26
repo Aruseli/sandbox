@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {BlocksPosition} from '../left-block-imagemaker/blocks-position';
-import {ImageResponsiveSensor} from '../../../sandbox/image-responsive-sensor';
+import { ChildrenResponsive } from '../../../packages/children-responsive';
 
 export const Picture = ({
   left,
@@ -23,9 +23,9 @@ export const Picture = ({
       wrapComponentProps={wrapComponentProps}
       onClick={onClick}
     > 
-      <ImageResponsiveSensor fill={fill}>
+      <ChildrenResponsive fill={fill}>
         <img src={src} alt={alt} /> 
-      </ImageResponsiveSensor>
+      </ChildrenResponsive>
     </BlocksPosition>
   );
 }

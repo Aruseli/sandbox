@@ -11,6 +11,7 @@ export const Picture = ({
   src,
   alt,
   style,
+  fill = true,
   WrapComponent,
   wrapComponentProps,
   onClick
@@ -22,7 +23,7 @@ export const Picture = ({
       wrapComponentProps={wrapComponentProps}
       onClick={onClick}
     > 
-      <ImageResponsiveSensor>
+      <ImageResponsiveSensor fill={fill}>
         <img src={src} alt={alt} /> 
       </ImageResponsiveSensor>
     </BlocksPosition>

@@ -43,7 +43,7 @@ export const Footer = ({ paddingTop, ...props }) => {
           <Grid item>
             <List>
               <ListItem>
-                <ListItemText primary='Кампус' secondary={
+                <ListItemText primary='Кампусы' secondary={
                   <>
                     <Link href='https://styleschool.ru/'><a style={{
                       color: '#000'

@@ -7,7 +7,6 @@ import { useSpring } from 'react-spring';
 
 import { Body } from '../imports/components/body';
 import { theme as defaultTheme } from '../imports/theme';
-import { Spacing } from '../imports/components/spacing';
 import Vshsdt from '../imports/components/vshsdt/vshsdt';
 import {Imagemaker} from '../imports/components/vshsdt/imagemaker';
 
@@ -16,7 +15,7 @@ export const SpringContext = React.createContext();
 export default () => {
   const [springProps, setSpring] = useSpring(() => ({
     s: 0,
-    spx: 0,
+    spx: 0, // scrollTop in px
     xys: [0, 0, 1],
     config: { mass: 5, tension: 350, friction: 40 },
   }));

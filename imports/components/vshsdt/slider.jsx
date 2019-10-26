@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useRef} from 'react';
 
-import {Grid} from '@material-ui/core';
+import {Grid, makeStyles} from '@material-ui/core';
 
 import {ArrowBackIos, ArrowForwardIos} from '@material-ui/icons';
 
+import { animated as a, interpolate } from 'react-spring';
+
 import {ImageResponsiveSensor} from '../../sandbox/image-responsive-sensor';
+import { SpringContext } from '../../../pages/imagemaker';
 
 const comments = [
   {
@@ -37,13 +40,29 @@ const comments = [
   }
 ]
 
+const useStyle = makeStyles(() => ({
+  animation: {
+    transition: 'all 1s ease',
+  }
+}));
+
+const calcRealIndex = (comments, stateI, commentI) => {
+  var ti = commentI + stateI;
+  return ti > comments.length - 1 ? ti - comments.length : ti;
+};
+
 export const Comments = ({}) => {
+  const classes = useStyle();
   const [index, setIndex] = useState(0);
-  const realComments = [
-    ...comments.slice(index),
-    ...comments.slice(0,index)
-  ];
-  console.log(realComments);
+
+  const { spx } = useContext(SpringContext);
+
+  const scrRef = useRef();
+  
+  const getTop = (ref) => ref.current ? ref.current.offsetTop : 0;
+
+  const scrItem = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scrRef)) * 0.1) + 5}px)`);
+  console.log(scrRef);
 
   const onPrevClick = () => {
     setIndex(index>0 ? index - 1 : comments.length - 1);
@@ -55,6 +74,7 @@ export const Comments = ({}) => {
 
   return(
     <Grid 
+      ref={scrRef} 
       container
       justify="center"
       alignItems="center"
@@ -72,34 +92,36 @@ export const Comments = ({}) => {
           top: 'calc(50% - 82px)',
           zIndex: 99,
         }}
-          onClick={onPrevClick}
+          onClick={onNextClick}
         >
           <ArrowBackIos />
         </div>
-        {realComments.map((value, index) => (
-          <div key={value.id} style={{
-            position: 'absolute',
-            height: '70%',
-            width: '70%',
-            left: index * 30,
-            zIndex: comments.length - index,
-            transform: index > 1
-              ? 'perspective(100px) rotateY(-5deg) translateX(0px)'
-              : index == 0
-              ? 'perspective(100px) rotateY(5deg) translateX(-200px)'
-              : 'perspective(100px) rotateY(0deg) translateX(0px)',
-            opacity: index ? 1 : 0,
-            transition: 'all 1s ease',
-            filter: index > 1
-              ? 'brightness(0.5)'
-              : 'brightness(1)',
-          }}
+        {comments.map((value, ci) => {
+          const i = calcRealIndex(comments, index, ci);
+          return <div key={value.id}
+            className={classes.animation}
+            style={{
+              position: 'absolute',
+              height: '70%',
+              width: '70%',
+              left: i * 30,
+              zIndex: comments.length - i,
+              transform: i > 1
+                ? 'perspective(100px) rotateY(-5deg) translateX(0px)'
+                : i == 0
+                ? 'perspective(100px) rotateY(5deg) translateX(-200px)'
+                : 'perspective(100px) rotateY(0deg) translateX(0px)',
+              opacity: i ? 1 : 0,
+              filter: i > 1
+                ? 'brightness(0.5)'
+                : 'brightness(1)',
+            }}
           >
             <ImageResponsiveSensor>
               <img src={value.src} alt={value.alt} style={{width: '100%'}} />
             </ImageResponsiveSensor>
           </div>
-        ))}
+        })}
       </Grid>
       <Grid item xs={10} sm={5} md={5} lg={5}
         style={{
@@ -113,26 +135,30 @@ export const Comments = ({}) => {
           top: 'calc(50% - 82px)',
           zIndex: 99,
         }}
-          onClick={onNextClick}
+          onClick={onPrevClick}
         >
           <ArrowForwardIos />
         </div>
-        {realComments.map((value, index) => (
-          <div key={value.id} style={{
-            position: 'absolute',
-            left: 20,
-            top: -70,
-            overflow: 'scroll',
-            height: '100%',
-            width: '100%',
-            transition: 'all 1s ease',
-            opacity: index != 1 ? 0 : 1,
-            border: '1px solid #ededed',
-            zIndex: 1,
-            background: 'rosybrown',
-            boxSizing: 'border-box',
-            padding: 30
-          }}
+        {comments.map((value, ci) => {
+          const i = calcRealIndex(comments, index, ci);
+          return <a.div 
+            key={value.id}
+            style={{
+              transform: scrItem,
+              position: 'absolute',
+              left: 20,
+              top: -70,
+              overflowY: 'scroll',
+              height: '100%',
+              width: '100%',
+              transition: 'left 1s ease, opacity 1s ease',
+              opacity: i != 1 ? 0 : 1,
+              border: '1px solid #ededed',
+              zIndex: 1,
+              background: 'rosybrown',
+              boxSizing: 'border-box',
+              padding: 30
+            }}
           >
             <Grid
               container
@@ -146,8 +172,8 @@ export const Comments = ({}) => {
                 {value.content}
               </Grid>
             </Grid>
-          </div>
-        ))}
+          </a.div>
+        })}
       </Grid>
     </Grid>
   );

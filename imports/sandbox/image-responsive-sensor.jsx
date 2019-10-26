@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import ReactResizeDetector from 'react-resize-detector';
 
-export const ImageResponsiveSensor = ({ children, style, ...props }) => {
+export const ImageResponsiveSensor = ({ children, fill = true, style, ...props }) => {
   const [sizeOut, setSizeOut] = useState({ width: 0, height: 0 });
   const [sizeIn, setSizeIn] = useState({ width: 0, height: 0 });
 
@@ -18,7 +18,7 @@ export const ImageResponsiveSensor = ({ children, style, ...props }) => {
   const h1 = (sizeIn.height * sizeOut.height) / sizeIn.height;
   const p1 = sizeIn.width / sizeIn.height;
   const p2 = w1 / h1;
-  const p = p1 > p2;
+  const p = fill ? p1 > p2 : p2 > p1;
   const w2 = p ? sizeOut.height / sizeIn.height : sizeOut.width / sizeIn.width;
   const h2 = p ? sizeOut.height / sizeIn.height : sizeOut.width / sizeIn.width;
 

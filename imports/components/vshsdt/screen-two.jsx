@@ -27,7 +27,7 @@ const imageMain = require('../../../images/fall.jpg');
 export const ScreenTwo = ({springProps: {spx}, setSpring, ...props }) => {
   const item3 = interpolate([spx], (spx) => `translateY(${spx - 550 <= 0 ? spx - 550 : 0}px)`);
   const item4 = interpolate([spx], (spx) => `opacity(${spx}px)`);
-  const item = ['Татьяна', 'Фомина'];
+  // const item = ['Татьяна', 'Фомина'];
 
   const classes = useStyles({});
   // const theme = useTheme();
@@ -53,7 +53,10 @@ export const ScreenTwo = ({springProps: {spx}, setSpring, ...props }) => {
             justify="space-between"
             alignItems="center"
             spacing={8}
-            >
+            // style={{
+            //   height: '80vh'
+            // }}
+          >
             {/*  лучше ограничить левую часть sm={4} md={3} */}
             <Grid item xs={5}>
               <Grid
@@ -113,7 +116,7 @@ export const ScreenTwo = ({springProps: {spx}, setSpring, ...props }) => {
                       paddingLeft: 20,
                     }}>
                     <Typography variant="h4" component="h3">
-                      {item}
+                      Татьяна<br />Фомина
                     </Typography>
                   </div>
                 </Grid>

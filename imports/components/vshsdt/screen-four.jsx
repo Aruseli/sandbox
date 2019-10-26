@@ -27,7 +27,7 @@ export const ScreenFour = ({...props}) => {
           </div>
         </Grid>
         <Grid item xs={6}>
-          <img src={diploma} />
+          <img src={diploma} style={{width: '100%'}} />
         </Grid>
         <Grid item xs={3}>
           <div>

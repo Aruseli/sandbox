@@ -7,6 +7,7 @@ import {useSpring, animated as a } from 'react-spring';
 export const delay = (time) => new Promise(res => setTimeout(res, time));
 
 export const VisibilitySensorSpring = ({
+  height = '100%',
   children,
   onVisibiltySensor = async ({
     isVisible,
@@ -56,7 +57,7 @@ export const VisibilitySensorSpring = ({
       }}/>
       <a.div style={{
         width: '100%',
-        height: '100%',
+        height: height,
         backgroundColor: backgroundColor,
         position: 'absolute',
         top: 0, left: 0,

@@ -41,8 +41,6 @@ export const ScreenOne = ({ springProps: {spx}, setSpring, ...props }) => {
   const item3 = interpolate([spx], (spx) => `translateY(${spx}px)`);
 
   const classes = useStyles({});
-  // const theme = useTheme();
-  // const xsDown = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
     <>

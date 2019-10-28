@@ -1,7 +1,7 @@
 import '../imports/i18n';
 
 import { ThemeProvider } from '@material-ui/styles';
-import {Grid, Typography} from '@material-ui/core';
+import {Grid, Typography, Hidden} from '@material-ui/core';
 import React, {useCallback} from 'react';
 import { useSpring } from 'react-spring';
 
@@ -56,13 +56,13 @@ export default () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <Vshsdt 
-                  screen={'style'} 
-                  justify='flex-end'
-                  alignItems='flex-end'
-                />
-              </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={6}>
+                  <Vshsdt 
+                    screen={'style'} 
+                    justify='flex-end'
+                    alignItems='flex-end'
+                  />
+                </Grid>
             </Grid>
             {/* <Spacing size={30} /> */}
             <Imagemaker />

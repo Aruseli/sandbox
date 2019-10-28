@@ -28,6 +28,7 @@ export const VisibilitySensorSpring = ({
     // transform: 'translateY(0px)' 
   }),
   backgroundColor='transparent',
+  ...style
 }) => {
   const [textStyle, setTextStyle] = useSpring(textOut);
   const [backgroundStyle, setBackgroundStyle] = useSpring(backgroundOut);
@@ -55,14 +56,16 @@ export const VisibilitySensorSpring = ({
         position: 'absolute',
         top: 0, left: 0,
       }}/>
-      <a.div style={{
+      <a.div
+      style={{
         width: '100%',
         height: height,
         backgroundColor: backgroundColor,
         position: 'absolute',
         top: 0, left: 0,
         ...backgroundStyle,
-      }}/>
+      }}
+      />
       <a.div style={{
         width: '100%',
         height: '100%',

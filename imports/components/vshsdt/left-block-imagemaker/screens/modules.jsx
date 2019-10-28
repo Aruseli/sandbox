@@ -10,71 +10,145 @@ import {VisibilitySensorSpring, delay} from '../../visibility-sensor-spring';
 
 const content = [
   <>
-    <Typography component='h2' variant='h6' align="center">ОСНОВЫ ИМИДЖМЕЙКИНГА</Typography>
-    <Typography component='h2' variant='h6' align='center'>STYLE BASIC</Typography>
-    <Typography component='h2' variant='h6' align='center'>Уровень 1</Typography>
-    <Typography component='h2' variant='body2' align='center'>(120 ак.часов)</Typography>
-    <Typography component='p' varaint='body1'>
-      Все для правильного старта карьеры и творчества в индустрии
-    </Typography>
+    <Typography component='h2' variant='h6' align="left" 
+      style={{
+        position: 'relative',
+        top: -35,
+        left: -40
+      }}>ОСНОВЫ ИМИДЖМЕЙКИНГА</Typography>
+    <Typography component='h2' variant='h6' align='left'
+      style={{
+        position: 'relative',
+        top: -35,
+        left: -40,
+        fontWeight: 300
+      }}
+    >STYLE BASIC</Typography>
     <Typography component='p' variant='body2' align="left" style={{
-      margin: '0 20px'
       }}>
-      <span style={{fontWeight: 800}}>В процессе обучения:</span> 
+      Все для правильного старта карьеры и творчества в индустрии
+      <span style={{fontWeight: 800}}>В процессе обучения:</span>  
       система подбора одежды, аксессуаров, образа от колористики до стилей 
       и гардероба. Актуальные правила покупки стильных и модных вещей
     </Typography>
+    <Typography component='h2' variant='subtitle2' align='left' 
+      style={{
+        float: 'left', 
+        fontWeight: 700,
+      }}>Уровень 1</Typography>
+    <Typography component='h2' variant='subtitle2' align='right'
+      style={{ 
+        fontWeight: 700,
+      }}
+    >120 ак.часов</Typography>
   </>,
   <>
-    <Typography component='h2' variant='h6' align="center">ИМИДЖ-КОНСАЛТИНГ</Typography>
-    <Typography component='h2' variant='h6' align='center'>PERSONAL STYLING</Typography>
-    <Typography component='h2' variant='h6' align='center'>Уровень 2</Typography>
-    <Typography component='h2' variant='body2' align='center'>(120 ак.часов)</Typography>
-    <Typography component='p' varaint='body1'>
-      <span style={{fontWeight: 800}}>Специализация:</span> имидж-стилист, 
-      имидж-консультант, шопер
-    </Typography>
+    <Typography component='h2' variant='h6' align="left"
+      style={{
+        position: 'relative',
+        top: -35,
+        left: -40
+      }}
+    >ИМИДЖ-КОНСАЛТИНГ</Typography>
+    <Typography component='h2' variant='h6' align='left'
+      style={{
+        position: 'relative',
+        top: -35,
+        left: -40,
+        fontWeight: 300
+      }}
+    >PERSONAL STYLING</Typography>
     <Typography component='p' variant='body2' align="left" style={{
-      margin: '0 20px'
-      }}>
+      
+      }}><span style={{fontWeight: 800}}>Специализация:</span> имидж-стилист, 
+      имидж-консультант, шопер
       <span style={{fontWeight: 800}}>В процессе обучения:</span> 
       алгоритмы и инструменты консультирования клиентов по моде и стилю, 
       шопинг сопровождение. Мужская и женская стилистика
     </Typography>
+    <Typography component='h2' variant='subtitle2' align='left'
+      style={{
+        float: 'left', 
+        fontWeight: 700,
+      }}
+    >Уровень 2</Typography>
+    <Typography component='h2' variant='subtitle2' align='right'
+      style={{ 
+        fontWeight: 700,
+      }}
+    >120 ак.часов</Typography>
   </>,
   <>
-    <Typography component='h2' variant='h6' align="center">ЛИЧНЫЙ БРЕНД</Typography>
-    <Typography component='h2' variant='h6' align='center'>PERSONAL BRANDING</Typography>
-    <Typography component='h2' variant='h6' align='center'>Уровень 4</Typography>
-    <Typography component='h2' variant='body2' align='center'>(60 ак.часов)</Typography>
-    <Typography component='p' varaint='body1'>
-      <span style={{fontWeight: 800}}>Специализация:</span> 
-      cоздание стиля и личного бренда выпускника
-    </Typography>
+    <Typography component='h2' variant='h6' align="left"
+      style={{
+        position: 'relative',
+        top: -35,
+        left: -40
+      }}
+    >ЛИЧНЫЙ БРЕНД</Typography>
+    <Typography component='h2' variant='h6' align='left'
+      style={{
+        position: 'relative',
+        top: -35,
+        left: -40,
+        fontWeight: 300
+      }}
+    >PERSONAL BRANDING</Typography>
     <Typography component='p' variant='body2' align="left" style={{
-      margin: '0 20px'
-      }}>
+      
+      }}><span style={{fontWeight: 800}}>Специализация:</span> 
+      cоздание стиля и личного бренда выпускника
       <span style={{fontWeight: 800}}>В финале обучения:</span> 
       подготовка к защите дипломной работы, формирование портфолио, 
       стиля и стратегии профессионального продвижения
     </Typography>
+    <Typography component='h2' variant='subtitle2' align='left'
+      style={{
+        float: 'left', 
+        fontWeight: 700,
+      }}
+    >Уровень 4</Typography>
+    <Typography component='h2' variant='subtitle2' align='right'
+      style={{ 
+        fontWeight: 700,
+      }}
+    >60 ак.часов</Typography>
   </>,
   <>
-    <Typography component='h2' variant='h6' align="center">СТИЛИСТИКА МОДЫ</Typography>
-    <Typography component='h2' variant='h6' align='center'>FASHION STYLING</Typography>
-    <Typography component='h2' variant='h6' align='center'>Уровень 3</Typography>
-    <Typography component='h2' variant='body2' align='center'>(180 ак.часов)</Typography>
-    <Typography component='p' varaint='body1'>
-      <span style={{fontWeight: 800}}>Специализация:</span> 
-      стилист фотосессий, стилист модных проектов
-    </Typography>
+    <Typography component='h2' variant='h6' align="left"
+      style={{
+        position: 'relative',
+        top: -35,
+        left: -40
+      }}
+    >СТИЛИСТИКА МОДЫ</Typography>
+    <Typography component='h2' variant='h6' align='left'
+      style={{
+        position: 'relative',
+        top: -35,
+        left: -40,
+        fontWeight: 300
+      }}
+    >FASHION STYLING</Typography>
     <Typography component='p' variant='body2' align="left" style={{
-      margin: '0 20px'
-      }}>
+      
+      }}><span style={{fontWeight: 800}}>Специализация:</span> 
+      стилист фотосессий, стилист модных проектов
       <span style={{fontWeight: 800}}>В процессе обучения:</span> 
       стилизация событий в индустрии моды (фотосессии, показы, ТВ), 
       проекты для fashion retail. Развитие креативности
     </Typography>
+    <Typography component='h2' variant='subtitle2' align='left'
+      style={{
+        float: 'left', 
+        fontWeight: 700,
+      }}
+    >Уровень 3</Typography>
+    <Typography component='h2' variant='subtitle2' align='right'
+      style={{ 
+        fontWeight: 700,
+      }}
+    >180 ак.часов</Typography>
   </>
 ]
 
@@ -130,6 +204,10 @@ export const Modules = ({}) => {
                 }) => {
                   if (isVisible) await delay(100); 
                   setBackgroundStyle(isVisible ? backgroundIn() : backgroundOut() );
+                }}
+                style={{
+                  padding: '10px 40px',
+                  margin: 10
                 }}
               >
                 {content[0]}

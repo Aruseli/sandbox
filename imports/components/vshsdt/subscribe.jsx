@@ -42,7 +42,7 @@ export const Subscribe = ({ ...props }) => {
         right: -50,
         top: -20,
         textAlign: 'right',
-        width: 50
+        width: 30
       }}>
         <img src={paperPlane} alt='subscrine button' style={{
           width: '100%'}} />

@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
 const fb = require("../../../images/fb.svg");
 const vk = require("../../../images/vk.svg");
 const inst = require("../../../images/instagram.svg");
+const map = require("../../../images/maraudersMap.svg");
 
 export const Footer = ({ paddingTop, ...props }) => {
   const classes = useStyles({});
@@ -20,7 +21,27 @@ export const Footer = ({ paddingTop, ...props }) => {
   <div style={{
     backgroundColor: '#f7a22b',
     paddingTop: paddingTop,
+    height: '70vh'
   }}>
+    <div style={{
+      position: 'relative'
+    }}>
+      <Grid
+        container
+        justify="center"
+        alignItems='center'
+        style={{
+          position: 'absolute',
+          top: -100
+        }}
+      >
+        <Grid item xs={7}>
+          <img src={map} style={{
+            width: '100%'
+          }}/>
+        </Grid>
+      </Grid>
+    </div>
     <Grid 
       container
       direction="row"
@@ -60,10 +81,10 @@ export const Footer = ({ paddingTop, ...props }) => {
               </ListItem>
               <ListItem>
                 <ListItemText primary='Партнеры' secondary={
-                  <div>
+                  <span>
                     Российский государственный социальный университет<br />
                     Российский государственный университет туризма и сервиса
-                  </div>
+                  </span>
                 } />
               </ListItem>
             </List>
@@ -75,16 +96,16 @@ export const Footer = ({ paddingTop, ...props }) => {
           container
           direction="row"
           justify="flex-end"
-          alignItems="center"
+          alignItems="flex-start"
         >
           <Grid item>
             <List>
               <ListItem>
-                <ListItemText component="div" primary='Телефон' secondary={
-                  <div>
+                <ListItemText primary='Телефон' secondary={
+                  <span>
                     +7 (495) 221-89-35<br />
                     8 (800) 550-78-93
-                  </div>
+                  </span>
                 } />
               </ListItem>
               <ListItem>
@@ -92,40 +113,59 @@ export const Footer = ({ paddingTop, ...props }) => {
               </ListItem>
               <ListItem>
                 <ListItemAvatar>
-                  <Link href='https://www.facebook.com/styleschool.ru/'>
-                    <a>
-                      <img src={fb} alt='facebook' style={{
-                        width: 20,
-                        height: 20,
-                        marginRight: 20
-                      }} />
-                    </a>
-                  </Link>
-                  <Link href='https://www.instagram.com/styleschool_msk/'>
-                    <a>
-                      <img src={inst} alt='instagram' style={{
-                        width: 20,
-                        height: 20,
-                        marginRight: 20
-                      }} />
-                    </a>
-                  </Link>
-                  <Link href='https://vk.com/stylemsk'>
-                    <a>
-                      <img src={vk} alt='vkontakte' style={{
-                        width: 20,
-                        height: 20
-                      }} />
-                    </a>
-                  </Link>
+                  <>
+                    <Link href='https://www.facebook.com/styleschool.ru/'>
+                      <a>
+                        <img src={fb} alt='facebook' style={{
+                          width: 20,
+                          height: 20,
+                          marginRight: 20
+                        }} />
+                      </a>
+                    </Link>
+                    <Link href='https://www.instagram.com/styleschool_msk/'>
+                      <a>
+                        <img src={inst} alt='instagram' style={{
+                          width: 20,
+                          height: 20,
+                          marginRight: 20
+                        }} />
+                      </a>
+                    </Link>
+                    <Link href='https://vk.com/stylemsk'>
+                      <a>
+                        <img src={vk} alt='vkontakte' style={{
+                          width: 20,
+                          height: 20
+                        }} />
+                      </a>
+                    </Link>
+                  </>
                 </ListItemAvatar>
               </ListItem>
             </List>
           </Grid>
         </Grid>
+        <Grid 
+          container
+          direction="row"
+          justify="flex-end"
+          alignItems="flex-start"
+          style={{
+            height: '15vh'
+          }}>
+          <Grid item>
+            <Typography variant='subtitle1' component="h2">Подписаться на новости курса</Typography>
+          </Grid>
+          <Grid item style={{
+            position: 'relative'
+          }}>
+            <Subscribe />            
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
-    <Grid 
+    {/* <Grid 
       container
       direction="column"
       justify="center"
@@ -141,7 +181,7 @@ export const Footer = ({ paddingTop, ...props }) => {
       }}>
         <Subscribe />            
       </Grid>
-    </Grid>
+    </Grid> */}
   </div>
   );
 };

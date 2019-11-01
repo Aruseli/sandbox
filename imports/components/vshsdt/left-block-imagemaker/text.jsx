@@ -4,8 +4,6 @@ import {
 
 import React from 'react';
 
-import { animated as a, interpolate } from 'react-spring';
-
 import {BlocksPosition} from './blocks-position';
 
 export const Text = ({

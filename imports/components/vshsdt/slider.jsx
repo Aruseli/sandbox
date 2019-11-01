@@ -55,14 +55,13 @@ export const Comments = ({}) => {
   const classes = useStyle();
   const [index, setIndex] = useState(0);
 
-  const { spx } = useContext(SpringContext);
+  const { spx, sh } = useContext(SpringContext);
 
   const scrRef = useRef();
   
-  const getTop = (ref) => ref.current ? ref.current.offsetTop : 0;
+  const getTop = (ref) => ref.current ? ref.current.offsetTop + (ref.current.offsetHeight / 2) : 0;
 
-  const scrItem = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scrRef)) * 0.1) + 5}px)`);
-  console.log(scrRef);
+  const scrItem = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scrRef)) * 0.1) + 5}px)`);
 
   const onPrevClick = () => {
     setIndex(index>0 ? index - 1 : comments.length - 1);

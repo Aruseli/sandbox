@@ -1,5 +1,4 @@
 import {
-  makeStyles,
   Grid,
   Hidden,
   Tabs,
@@ -7,57 +6,21 @@ import {
   Container
 } from '@material-ui/core';
 
-import React, {useState, useRef} from 'react';
-import { useSpring } from 'react-spring';
+import React, {useState} from 'react';
 
 import {LeftBlocks} from './imagemaker-left-blocks';
 import { ProgrammBlock } from './programm-block';
 import { Footer } from './footer';
 
-export const Imagemaker = ({}) => {
+export const Imagemaker = ({ leftBlockRef, rightBlockRef }) => {
   const [value, setValue] = useState('course');
-  const [springProps, setSpring] = useSpring(() => ({
-    spx: 0, 
-    config: { mass: 5, tension: 350, friction: 40 },
-  }));
-  
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const leftBlockRef = useRef();
-  const rightBlockRef = useRef();
-  const documentHeightRef = useRef();
-
-  const getTop = (ref) => ref.current ? ref.current.offsetTop : 0;
-
-  const leftBlockHeight = (leftBlockRef) => leftBlockRef.current ? leftBlockRef.current.offsetHeight : 0;
-    console.log(leftBlockRef);
-
-  const rightBlockHeight = (rightBlockRef) => rightBlockRef.current ? rightBlockRef.current.offsetHeight : 0;
-    console.log(rightBlockRef);
-
-  const documentHeight = (documentHeightRef) => documentHeightRef.current ? documentHeightRef.current.scrollHeight : 0;
-    console.log(documentHeightRef);
-
-  const leftBlockTop = (leftBlockRef) => leftBlockRef.current ? leftBlockRef.current.offsetTop : 0;
-    console.log(leftBlockRef);
-
-  const rightBlockTop = (rightBlockRef) => rightBlockRef.current ? rightBlockRef.current.offsetTop : 0;
-    console.log(rightBlockRef);
-
-  const onScroll = e => {
-    console.log(leftBlockRef);
-    return setSpring({
-      spx: e.target.scrollTop,
-    });
-  };
-
   return (
-    <div ref={documentHeightRef}
-      onScroll={onScroll}
-    >
+    <div>
       <Hidden implementation='css' mdUp>
         <Tabs
           value={value}
@@ -94,7 +57,7 @@ export const Imagemaker = ({}) => {
           </Grid>
         </Grid>
       </Hidden>
-      <Footer paddingTop={100} />
+      {/* <Footer paddingTop={100} /> */}
     </div>
   );
 }

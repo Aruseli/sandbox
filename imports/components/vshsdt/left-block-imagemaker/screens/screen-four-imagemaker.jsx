@@ -1,11 +1,11 @@
 import {
-  Typography, ListItem, ListItemText, Grid, List
+  Typography, ListItem, ListItemText, Grid, List, Hidden
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
 import React, { useRef, useContext, useState } from 'react';
 
-import { interpolate } from 'react-spring';
+import { animated as a, interpolate } from 'react-spring';
 
 import { SpringContext } from '../../../../../pages/imagemaker';
 
@@ -19,19 +19,111 @@ const useStyle = makeStyles(() => ({
   },
 }));
 
+const freeLearning = require('../../../../../images/comp.svg');
+const offline = require('../../../../../images/school.svg');
+const online = require('../../../../../images/online.svg');
+
+const content=[
+  <>
+    <List disablePadding>
+      <Typography component='h2' variant="h6" align='center'>
+      Вольный слушатель
+      </Typography>
+      <ListItem style={{
+        paddingTop: 0,
+        paddingBottom: 0
+      }}>
+        <ListItemText primary='Доступно только в дистанционном обучении' />
+      </ListItem>
+      <ListItem style={{
+        paddingTop: 0,
+        paddingBottom: 0
+      }}>
+        <ListItemText primary='Доступ к обучению сразу после оплаты' />
+      </ListItem>
+      <ListItem style={{
+        paddingTop: 0,
+        paddingBottom: 0
+      }}>
+        <ListItemText primary='Возможность выбирать отдельно интересующие модули' />
+      </ListItem>
+      <ListItem style={{
+        paddingTop: 0,
+        paddingBottom: 0
+      }}>
+        <ListItemText primary={<b>Без требований по выполнению д/з</b>} />
+      </ListItem>
+    </List>
+  </>,
+  <>
+    <List disablePadding>
+      <Typography component='h2' variant="h6" align='center'>
+      Очное обучение
+      </Typography>
+      <ListItem style={{
+        paddingTop: 0,
+        paddingBottom: 0
+      }}>
+        <ListItemText primary='Доступно: Москва, Новосибирск, Бишкек' />
+      </ListItem>
+      <ListItem style={{
+        paddingTop: 0,
+        paddingBottom: 0
+      }}>
+        <ListItemText primary='Дневные и вечерние группы' />
+      </ListItem>
+      <ListItem style={{
+        paddingTop: 0,
+        paddingBottom: 0
+      }}>
+        <ListItemText primary='Практика в ТЦ, консультации, фото' />
+      </ListItem>
+      <ListItem style={{
+        paddingTop: 0,
+        paddingBottom: 0
+      }}>
+        <ListItemText primary={<b>Учебу курирует наставник</b>} />
+      </ListItem>
+    </List>
+  </>,
+  <>
+    <List disablePadding>
+      <Typography component='h2' variant="h6" align='center'>
+      Дистант или заочно
+      </Typography>
+      <ListItem style={{
+        paddingTop: 0,
+        paddingBottom: 0
+      }}>
+        <ListItemText primary='Доступно при подключении к интернет, учим на русском языке в любой точке мира' />
+      </ListItem>
+      <ListItem style={{
+        paddingTop: 0,
+        paddingBottom: 0
+      }}>
+        <ListItemText primary='Гибкий график обучения, обязательно соблюдение сроков сдачи практических работ' />
+      </ListItem>
+      <ListItem style={{
+        paddingTop: 0,
+        paddingBottom: 0
+      }}>
+        <ListItemText primary={<b>В заочной форме обучения доступны 2 очные сессии</b>} />
+      </ListItem>
+    </List>
+  </>
+]
+
 export const ScreenFour = ({marginLeft}) => {
   const classes = useStyle();
-  const { spx } = useContext(SpringContext);
+  const { spx, sh } = useContext(SpringContext);
   const [toggler, setToggler] = useState(false);
 
   // надо такие добавлять на каждый скрин-див в котором хочется применять interpolate
   const scr2Ref = useRef();
 
-  const getTop = (ref) => ref.current ? ref.current.offsetTop : 0;
+  const getTop = (ref) => ref.current ? ref.current.offsetTop + (ref.current.offsetHeight / 2) : 0;
   
-  const scr2item1 = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scr2Ref)) * 0.2) + 0}px)`);
-  const scr2item2 = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scr2Ref)) * 0.5) + 0}px)`);
-  const scr2item3 = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scr2Ref)) * 0.5) + 0}px)`);
+  const scr2item2 = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scr2Ref)) * 0.1) + 0}px)`);
 
   return (<>
     <div style={{
@@ -76,64 +168,111 @@ export const ScreenFour = ({marginLeft}) => {
               spacing={5}
             >
               <Grid item xs={4}>
-                <List>
-                  <Typography component='h2' variant="h6" align='center'>
-                  Вольный слушатель
-                  </Typography>
-                  <ListItem>
-                  <ListItemText primary='Доступно только в дистанционном обучении' />
-                  </ListItem>
-                  <ListItem>
-                  <ListItemText primary='Доступ к обучению сразу после оплаты' />
-                  </ListItem>
-                  <ListItem>
-                  <ListItemText primary='Возможность выбирать отдельно интересующие модули' />
-                  </ListItem>
-                  <ListItem>
-                  <ListItemText primary='Без требований по выполнению д/з' />
-                  </ListItem>
-                </List>
+                {content[0]}
               </Grid>
               <Grid item xs={4}>
-                <List>
-                  <Typography component='h2' variant="h6" align='center'>
-                  Очное обучение
-                  </Typography>
-                  <ListItem>
-                  <ListItemText primary='Доступно: Москва, Новосибирск, Бишкек' />
-                  </ListItem>
-                  <ListItem>
-                  <ListItemText primary='Дневные и вечерние группы' />
-                  </ListItem>
-                  <ListItem>
-                  <ListItemText primary='Практика в ТЦ, консультации, фото' />
-                  </ListItem>
-                  <ListItem>
-                  <ListItemText primary='Учебу курирует наставник' />
-                  </ListItem>
-                </List>
+                {content[1]}
               </Grid>
               <Grid item xs={4}>
-                <List>
-                  <Typography component='h2' variant="h6" align='center'>
-                  Дистант или заочно
-                  </Typography>
-                  <ListItem>
-                  <ListItemText primary='Доступно при подключении к интернет, учим на русском языке в любой точке мира' />
-                  </ListItem>
-                  <ListItem>
-                  <ListItemText primary='Гибкий график обучения, обязательно соблюдение сроков сдачи практических работ' />
-                  </ListItem>
-                  <ListItem>
-                  <ListItemText primary='В заочной форме обучения доступны 2 очные сессии' />
-                  </ListItem>
-                </List>
+                {content[2]}
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </VisibilitySensorSpring>
     </div> 
+    {/* <Hidden smUp implementation='css'>
+        <Grid
+          ref={scr2Ref} 
+          container
+          display='column'
+          justify="center"
+          alignItems="center" 
+          spacing={8}
+        >
+          <Grid item xs={10}
+            style={{
+              position: 'relative', 
+            }} 
+          >
+            <a.div
+              style={{
+                transform: scr2item2,
+                backgroundColor: 'rgb(239, 195, 195)',
+                boxSizing: 'border-box',
+                padding: 20,
+              }}
+            >
+            <Grid
+              container
+              justify="center"
+              alignItems="center"
+            >
+              <Grid item xs={4}>
+                <img src={freeLearning} style={{
+                  width: '100%'
+                }} />
+              </Grid>
+            </Grid>  
+              {content[0]}
+            </a.div>
+          </Grid>
+          <Grid item xs={10}
+            style={{
+              position: 'relative', 
+            }} 
+          >
+            <a.div
+              style={{
+                transform: scr2item2,
+                backgroundColor: 'rgb(239, 195, 195)',
+                boxSizing: 'border-box',
+                padding: 20,
+              }}
+            >
+              <Grid
+                container
+                justify="center"
+                alignItems="center"
+              >
+                <Grid item xs={4}>
+                  <img src={offline} style={{
+                    width: '100%'
+                  }} />
+                </Grid>
+              </Grid> 
+              {content[1]}
+            </a.div>
+          </Grid>
+          <Grid item xs={10}
+            style={{
+              position: 'relative', 
+            }} 
+          >
+            <a.div
+              style={{
+                transform: scr2item2,
+                backgroundColor: 'rgb(239, 195, 195)',
+                boxSizing: 'border-box',
+                padding: 20,
+              }}
+            >
+              <Grid
+                container
+                justify="center"
+                alignItems="center"
+              >
+                <Grid item xs={4}>
+                  <img src={online} style={{
+                    width: '100%'
+                  }} />
+                </Grid>
+              </Grid>
+              {content[2]}
+            </a.div>
+          </Grid>
+        </Grid>
+    </Hidden> */}
   </>);
 }
   

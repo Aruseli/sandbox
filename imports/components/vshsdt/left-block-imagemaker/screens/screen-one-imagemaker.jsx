@@ -16,9 +16,16 @@ import {VisibilitySensorSpring, delay} from '../../visibility-sensor-spring';
 
 const useStyle = makeStyles(() => ({
   screen: {
-  position: 'relative',
-  width: '100%',
-  height: '70vh',
+    position: 'relative',
+    width: '100%',
+    height: '70vh',
+    marginBottom: 50
+  },
+  screenXs: {
+    position: 'relative',
+    width: '100%',
+    height: '70vh',
+    marginBottom: 50
   },
 }));
 
@@ -26,19 +33,19 @@ const Girl = require('../../../../../images/3.jpeg?resize&size=300');
 
 export const ScreenOne = ({}) => {
   const classes = useStyle();
-  const { spx } = useContext(SpringContext);
+  const { spx, sh } = useContext(SpringContext);
 
   // надо такие добавлять на каждый скрин-див в котором хочется применять interpolate
   const scr1Ref = useRef();
   
-  const getTop = (ref) => ref.current ? ref.current.offsetTop : 0;
+  const getTop = (ref) => ref.current ? ref.current.offsetTop + (ref.current.offsetHeight / 2) : 0;
 
-  const scr1item1 = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scr1Ref)) * 0.2) + 0}px)`);
-  const scr1item2 = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scr1Ref)) * 0.3) + 0}px)`);
-  const scr1item3 = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scr1Ref)) * 0.5) + 0}px)`);
+  const scr1item1 = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scr1Ref)) * 0.2) + 0}px)`);
+  const scr1item2 = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scr1Ref)) * 0.3) + 0}px)`);
+  const scr1item3 = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scr1Ref)) * 0.5) + 0}px)`);
   
   return (<>
-    <Hidden xsDown>
+    <Hidden xsDown implementation='css'>
       <div ref={scr1Ref} className={classes.screen}>
         <Picture 
           left='70%' top='65%'
@@ -96,8 +103,8 @@ export const ScreenOne = ({}) => {
         </Text>
       </div>
     </Hidden>
-    <Hidden smUp>
-      <div ref={scr1Ref} className={classes.screen}>
+    <Hidden smUp implementation='css'>
+      <div ref={scr1Ref} className={classes.screenXs}>
         <Picture 
           left='70%' top='65%'
           width='55%' height='60%'

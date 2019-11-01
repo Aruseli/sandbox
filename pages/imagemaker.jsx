@@ -2,13 +2,14 @@ import '../imports/i18n';
 
 import { ThemeProvider } from '@material-ui/styles';
 import {Grid, Typography, Hidden} from '@material-ui/core';
-import React, {useCallback} from 'react';
+import React, {useCallback, useRef} from 'react';
 import { useSpring } from 'react-spring';
 
 import { Body } from '../imports/components/body';
 import { theme as defaultTheme } from '../imports/theme';
 import Vshsdt from '../imports/components/vshsdt/vshsdt';
 import {Imagemaker} from '../imports/components/vshsdt/imagemaker';
+import {Footer} from '../imports/components/vshsdt/footer';
 
 export const SpringContext = React.createContext();
 
@@ -16,14 +17,40 @@ export default () => {
   const [springProps, setSpring] = useSpring(() => ({
     s: 0,
     spx: 0, // scrollTop in px
+    sh: 0,
     xys: [0, 0, 1],
     config: { mass: 5, tension: 350, friction: 40 },
   }));
 
+  const leftBlockRef = useRef();
+  const rightBlockRef = useRef();
+  const scrollRef = useRef();
+
+  const leftBlockHeight = (leftBlockRef) => leftBlockRef.current ? leftBlockRef.current.offsetHeight : 0;
+  const rightBlockHeight = (rightBlockRef) => rightBlockRef.current ? rightBlockRef.current.offsetHeight : 0;
+  const scrollTop = (scrollRef) => scrollRef.current ? scrollRef.current.scrollTop : 0;
+  const scrollHeight = (scrollRef) => scrollRef.current ? scrollRef.current.offsetHeight : 0;
+  const leftBlockTop = (leftBlockRef) => leftBlockRef.current ? leftBlockRef.current.offsetTop : 0;
+  const rightBlockTop = (rightBlockRef) => rightBlockRef.current ? rightBlockRef.current.offsetTop : 0;
+
   const onScroll = useCallback(e => {
+    const input = {
+      leftBlockHeight: leftBlockHeight(leftBlockRef),
+      rightBlockHeight: rightBlockHeight(rightBlockRef),
+      scrollTop: scrollTop(scrollRef),
+      scrollHeight: scrollHeight(scrollRef),
+      leftBlockTop: leftBlockTop(leftBlockRef),
+      rightBlockTop: rightBlockTop(rightBlockRef),
+    };
+
+    input.rightIsMore = input.leftBlockHeight < input.rightBlockHeight;
+
+    
+
     return setSpring({
       s: e.target.scrollTop / (e.target.scrollHeight - e.target.clientHeight),
       spx: e.target.scrollTop,
+      sh: e.target.offsetHeight,
     });
   }, []);
   
@@ -34,6 +61,7 @@ export default () => {
         <div
           id="scrollable-page"
           onScroll={onScroll}
+          ref={scrollRef}
           onMouseMove={({ clientX: x, clientY: y }) => setSpring({ xys: [(y - window.innerHeight / 2), (x - window.innerWidth / 2), 1.1] })}
           style={{
             position: 'fixed',
@@ -65,7 +93,8 @@ export default () => {
                 </Grid>
             </Grid>
             {/* <Spacing size={30} /> */}
-            <Imagemaker />
+            <Imagemaker {...{ leftBlockRef, rightBlockRef, scrollRef }}/>
+            <Footer paddingTop={100} />
           </Body>
         </div>
       </SpringContext.Provider>

@@ -21,15 +21,15 @@ const useStyle = makeStyles(() => ({
 
 export const ScreenFive = ({}) => {
   const classes = useStyle();
-  const { spx } = useContext(SpringContext);
+  const { spx, sh } = useContext(SpringContext);
 
   const scr2Ref = useRef();
 
-  const getTop = (ref) => ref.current ? ref.current.offsetTop : 0;
+  const getTop = (ref) => ref.current ? ref.current.offsetTop + (ref.current.offsetHeight / 2) : 0;
   
-  const scr2item1 = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scr2Ref)) * 0.2) + 0}px)`);
-  const scr2item2 = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scr2Ref)) * 0.5) + 0}px)`);
-  const scr2item3 = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scr2Ref)) * 0.5) + 0}px)`);
+  const scr2item1 = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scr2Ref)) * 0.2) + 0}px)`);
+  const scr2item2 = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scr2Ref)) * 0.5) + 0}px)`);
+  const scr2item3 = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scr2Ref)) * 0.5) + 0}px)`);
 
   return (<>
     <div style={{
@@ -40,21 +40,33 @@ export const ScreenFive = ({}) => {
         justify='center'
         alignItems='center'
         >
-        <Grid item xs={8} style={{
+        <Grid item xs={10} style={{
           position: 'relative', 
           padding: 20
         }}>
           <VisibilitySensorSpring
             backgroundOut={() => ({ 
               transformOrigin: 'bottom', 
-              transform: 'scaleY(0)' 
+              transform: 'scaleY(0)',
+              zIndex: -1, 
             })}
             backgroundIn={() => ({ 
               transformOrigin: 'bottom',  
-              transform: 'scaleY(1)' 
+              transform: 'scaleY(1)',
+              zIndex: -1, 
             })}
-            textIn={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
-            textOut={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
+            textIn={() => ({ 
+              position: 'relative', 
+              width: 'initial', 
+              height: 'initial',
+              padding: 20
+            })}
+            textOut={() => ({ 
+              position: 'relative', 
+              width: 'initial', 
+              height: 'initial',
+              padding: 20
+            })}
             backgroundColor='#ffbba6'
             visibilitySensorProps={{
               offset: { top: -100, bottom: -100 }
@@ -66,9 +78,14 @@ export const ScreenFive = ({}) => {
               if (isVisible) await delay(100); 
               setBackgroundStyle(isVisible ? backgroundIn() : backgroundOut() );
             }}
+            bgInText
           >
             <>
-              <Typography component='h2' variant='h6' align="center">Для кого</Typography>
+              <Typography component='h2' variant='h6' style={{
+                position: 'absolute',
+                top: -17,
+                left: -7
+              }}>Для кого</Typography>
               <Typography component='p' variant='body2' align="left" style={{
                 margin: '0 20px'
                 }}>
@@ -88,7 +105,7 @@ export const ScreenFive = ({}) => {
             justify='center'
             alignItems='flex-start'
           >
-            <Grid item xs={5} style={{ position: 'relative', padding: 20 }}>
+            <Grid item xs={10} sm={5} md={5} lg={5} style={{ position: 'relative', padding: 20 }}>
               <VisibilitySensorSpring
                 backgroundOut={() => ({ 
                   transformOrigin: 'right',  
@@ -98,8 +115,18 @@ export const ScreenFive = ({}) => {
                   transformOrigin: 'right',
                   transform: 'scaleX(1)' 
                 })}
-                textIn={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
-                textOut={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
+                textIn={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial',
+                  padding: 20
+                })}
+                textOut={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial',
+                  padding: 20
+                })}
                 backgroundColor='#ffccbc'
                 visibilitySensorProps={{
                   offset: { top: -100, bottom: -100 }
@@ -111,9 +138,14 @@ export const ScreenFive = ({}) => {
                   if (isVisible) await delay(100); 
                   setBackgroundStyle(isVisible ? backgroundIn() : backgroundOut() );
                 }}
+                bgInText
               >
                 <>
-                  <Typography component='h2' variant='h6' align="center">Возможности</Typography>
+                  <Typography component='h2' variant='h6' style={{
+                    position: 'absolute',
+                    top: -17,
+                    left: -7
+                  }}>Возможности</Typography>
                   <List dense>
                     <ListItem dense>
                       <ListItemText primary='Имидж-консультирование клиентов, шопинг в России и Европе' />
@@ -137,7 +169,7 @@ export const ScreenFive = ({}) => {
                 </>
               </VisibilitySensorSpring>
             </Grid>
-            <Grid item xs={5} style={{ position: 'relative', padding: 20 }}>
+            <Grid item xs={10} sm={5} md={5} lg={5} style={{ position: 'relative', padding: 20 }}>
               <VisibilitySensorSpring
                 backgroundOut={() => ({ 
                   transformOrigin: 'left',
@@ -147,8 +179,18 @@ export const ScreenFive = ({}) => {
                   transformOrigin: 'left',
                   transform: 'scaleX(1)' 
                 })}
-                textIn={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
-                textOut={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
+                textIn={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial',
+                  padding: 20
+                })}
+                textOut={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial',
+                  padding: 20
+                })}
                 backgroundColor='#ffab90'
                 visibilitySensorProps={{
                   offset: { top: -100, bottom: -100 }
@@ -161,9 +203,14 @@ export const ScreenFive = ({}) => {
                   if (isVisible) await delay(100); 
                   setBackgroundStyle(isVisible ? backgroundIn() : backgroundOut() );
                 }}
+                bgInText
               >
                 <>
-                  <Typography component='h2' variant='h6' align="center">В процессе обучения вас ждут</Typography>
+                  <Typography component='h2' variant='h6' style={{
+                    position: 'absolute',
+                    top: -17,
+                    left: -7
+                  }}>В процессе обучения вас ждут</Typography>
                   <List dense>
                     <ListItem>
                       <ListItemText primary='Мастер-классы с приглашенными экспертами' />

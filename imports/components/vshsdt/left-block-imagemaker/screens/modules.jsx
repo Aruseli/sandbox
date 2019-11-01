@@ -26,7 +26,7 @@ const content = [
     >STYLE BASIC</Typography>
     <Typography component='p' variant='body2' align="left" style={{
       }}>
-      Все для правильного старта карьеры и творчества в индустрии
+      Все для правильного старта карьеры и творчества в индустрии<br />
       <span style={{fontWeight: 800}}>В процессе обучения:</span>  
       система подбора одежды, аксессуаров, образа от колористики до стилей 
       и гардероба. Актуальные правила покупки стильных и модных вещей
@@ -61,7 +61,7 @@ const content = [
     <Typography component='p' variant='body2' align="left" style={{
       
       }}><span style={{fontWeight: 800}}>Специализация:</span> имидж-стилист, 
-      имидж-консультант, шопер
+      имидж-консультант, шопер<br />
       <span style={{fontWeight: 800}}>В процессе обучения:</span> 
       алгоритмы и инструменты консультирования клиентов по моде и стилю, 
       шопинг сопровождение. Мужская и женская стилистика
@@ -97,7 +97,7 @@ const content = [
     <Typography component='p' variant='body2' align="left" style={{
       
       }}><span style={{fontWeight: 800}}>Специализация:</span> 
-      cоздание стиля и личного бренда выпускника
+      cоздание стиля и личного бренда выпускника<br />
       <span style={{fontWeight: 800}}>В финале обучения:</span> 
       подготовка к защите дипломной работы, формирование портфолио, 
       стиля и стратегии профессионального продвижения
@@ -133,7 +133,7 @@ const content = [
     <Typography component='p' variant='body2' align="left" style={{
       
       }}><span style={{fontWeight: 800}}>Специализация:</span> 
-      стилист фотосессий, стилист модных проектов
+      стилист фотосессий, стилист модных проектов<br />
       <span style={{fontWeight: 800}}>В процессе обучения:</span> 
       стилизация событий в индустрии моды (фотосессии, показы, ТВ), 
       проекты для fashion retail. Развитие креативности
@@ -153,13 +153,13 @@ const content = [
 ]
 
 export const Modules = ({}) => {
-  const { spx } = useContext(SpringContext);
+  const { spx, sh } = useContext(SpringContext);
 
   const scrRef = useRef();
   
-  const getTop = (ref) => ref.current ? ref.current.offsetTop : 0;
+  const getTop = (ref) => ref.current ? ref.current.offsetTop + (ref.current.offsetHeight / 2) : 0;
 
-  const scrItem = interpolate([spx], (spx) => `translateY(${-((spx - getTop(scrRef)) * 0.2) + 0}px)`);
+  const scrItem = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scrRef)) * 0.2) + 0}px)`);
 
   return <div 
     ref={scrRef}
@@ -179,21 +179,33 @@ export const Modules = ({}) => {
             justify='center'
             alignItems='flex-end'
           >
-            <Grid item xs={12} sm={5} md={5} lg={5} style={{
+            <Grid item xs={10} sm={5} md={5} lg={5} style={{
               position: 'relative', 
               padding: 20
             }}>
               <VisibilitySensorSpring
                 backgroundOut={() => ({ 
                   transformOrigin: 'bottom', 
-                  transform: 'scaleY(0)' 
+                  transform: 'scaleY(0)' ,
+                  zIndex: -1,
                 })}
                 backgroundIn={() => ({ 
                   transformOrigin: 'bottom',  
-                  transform: 'scaleY(1)' 
+                  transform: 'scaleY(1)',
+                  zIndex: -1, 
                 })}
-                textIn={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
-                textOut={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
+                textIn={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial', 
+                  padding: 20
+                })}
+                textOut={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial', 
+                  padding: 20
+                })}
                 backgroundColor='rgb(245, 182, 204)'
                 visibilitySensorProps={{
                   offset: { top: -100, bottom: -100 }
@@ -209,25 +221,38 @@ export const Modules = ({}) => {
                   padding: '10px 40px',
                   margin: 10
                 }}
+                bgInText
               >
                 {content[0]}
               </VisibilitySensorSpring>
             </Grid>
-            <Grid item xs={12} sm={5} md={5} lg={5} style={{
+            <Grid item xs={10} sm={5} md={5} lg={5} style={{
               position: 'relative', 
               padding: 20
             }}>
               <VisibilitySensorSpring
                 backgroundOut={() => ({ 
                   transformOrigin: 'left', 
-                  transform: 'scaleX(0)' 
+                  transform: 'scaleX(0)',
+                  zIndex: -1, 
                 })}
                 backgroundIn={() => ({ 
                   transformOrigin: 'left',  
-                  transform: 'scaleX(1)' 
+                  transform: 'scaleX(1)',
+                  zIndex: -1, 
                 })}
-                textIn={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
-                textOut={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
+                textIn={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial',
+                  padding: 20
+                })}
+                textOut={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial',
+                  padding: 20
+                })}
                 backgroundColor='rgb(204, 177, 186)'
                 visibilitySensorProps={{
                   offset: { top: -100, bottom: -100 }
@@ -239,6 +264,7 @@ export const Modules = ({}) => {
                   if (isVisible) await delay(100); 
                   setBackgroundStyle(isVisible ? backgroundIn() : backgroundOut() );
                 }}
+                bgInText
               >
                 {content[1]}
               </VisibilitySensorSpring>
@@ -251,21 +277,33 @@ export const Modules = ({}) => {
             justify='center'
             alignItems='flex-start'
           >
-            <Grid item xs={12} sm={5} md={5} lg={5} style={{
+            <Grid item xs={10} sm={5} md={5} lg={5} style={{
               position: 'relative', 
               padding: 20
             }}>
               <VisibilitySensorSpring
                 backgroundOut={() => ({ 
                   transformOrigin: 'right', 
-                  transform: 'scaleX(0)' 
+                  transform: 'scaleX(0)',
+                  zIndex: -1, 
                 })}
                 backgroundIn={() => ({ 
                   transformOrigin: 'right',  
-                  transform: 'scaleX(1)' 
+                  transform: 'scaleX(1)',
+                  zIndex: -1, 
                 })}
-                textIn={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
-                textOut={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
+                textIn={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial', 
+                  padding: 20
+                })}
+                textOut={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial', 
+                  padding: 20
+                })}
                 backgroundColor='rgb(245, 182, 204)'
                 visibilitySensorProps={{
                   offset: { top: -100, bottom: -100 }
@@ -277,25 +315,38 @@ export const Modules = ({}) => {
                   if (isVisible) await delay(100); 
                   setBackgroundStyle(isVisible ? backgroundIn() : backgroundOut() );
                 }}
+                bgInText
               >
                 {content[2]}
               </VisibilitySensorSpring>
             </Grid>
-            <Grid item xs={12} sm={5} md={5} lg={5} style={{
+            <Grid item xs={10} sm={5} md={5} lg={5} style={{
               position: 'relative', 
               padding: 20
             }}>
               <VisibilitySensorSpring
                 backgroundOut={() => ({ 
                   transformOrigin: 'top', 
-                  transform: 'scaleY(0)' 
+                  transform: 'scaleY(0)',
+                  zIndex: -1, 
                 })}
                 backgroundIn={() => ({ 
                   transformOrigin: 'top',  
-                  transform: 'scaleY(1)' 
+                  transform: 'scaleY(1)',
+                  zIndex: -1, 
                 })}
-                textIn={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
-                textOut={() => ({ position: 'relative', width: 'initial', height: 'initial' })}
+                textIn={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial',
+                  padding: 20
+                })}
+                textOut={() => ({ 
+                  position: 'relative', 
+                  width: 'initial', 
+                  height: 'initial',
+                  padding: 20
+                })}
                 backgroundColor='rgb(204, 177, 186)'
                 visibilitySensorProps={{
                   offset: { top: -100, bottom: -100 }
@@ -307,6 +358,7 @@ export const Modules = ({}) => {
                   if (isVisible) await delay(100); 
                   setBackgroundStyle(isVisible ? backgroundIn() : backgroundOut() );
                 }}
+                bgInText
               >
                 {content[3]}
               </VisibilitySensorSpring>

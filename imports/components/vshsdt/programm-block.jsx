@@ -1,10 +1,5 @@
 import {
-    makeStyles,
-    Typography,
     List,
-    ListItem,
-    ListItemText,
-    Hidden,
     Paper,
 } from '@material-ui/core';
 

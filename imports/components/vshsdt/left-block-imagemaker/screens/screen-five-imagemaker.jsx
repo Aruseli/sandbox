@@ -1,5 +1,5 @@
 import {
-  Typography, ListItem, ListItemText, Grid, List, ListSubheader
+  Typography, ListItem, ListItemText, Grid, List
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
@@ -27,9 +27,9 @@ export const ScreenFive = ({}) => {
 
   const getTop = (ref) => ref.current ? ref.current.offsetTop + (ref.current.offsetHeight / 2) : 0;
   
-  const scr2item1 = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scr2Ref)) * 0.2) + 0}px)`);
-  const scr2item2 = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scr2Ref)) * 0.5) + 0}px)`);
-  const scr2item3 = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scr2Ref)) * 0.5) + 0}px)`);
+  const scr2item1 = interpolate([spx, sh], (spx, sh) => `translateY(${-((spx + sh / 2) - getTop(scr2Ref)) * 0.2}px)`);
+  const scr2item2 = interpolate([spx, sh], (spx, sh) => `translateY(${-((spx + sh / 2) - getTop(scr2Ref)) * 0.5}px)`);
+  const scr2item3 = interpolate([spx, sh], (spx, sh) => `translateY(${-((spx + sh / 2) - getTop(scr2Ref)) * 0.5}px)`);
 
   return (<>
     <div style={{
@@ -82,9 +82,10 @@ export const ScreenFive = ({}) => {
           >
             <>
               <Typography component='h2' variant='h6' style={{
-                position: 'absolute',
-                top: -17,
-                left: -7
+                  position: 'relative',
+                  top: -37,
+                  left: -27,
+                  marginBottom: -39
               }}>Для кого</Typography>
               <Typography component='p' variant='body2' align="left" style={{
                 margin: '0 20px'
@@ -105,7 +106,7 @@ export const ScreenFive = ({}) => {
             justify='center'
             alignItems='flex-start'
           >
-            <Grid item xs={10} sm={5} md={5} lg={5} style={{ position: 'relative', padding: 20 }}>
+            <Grid item xs={10} sm={6} md={6} lg={5} style={{ position: 'relative', padding: 20 }}>
               <VisibilitySensorSpring
                 backgroundOut={() => ({ 
                   transformOrigin: 'right',  
@@ -142,34 +143,35 @@ export const ScreenFive = ({}) => {
               >
                 <>
                   <Typography component='h2' variant='h6' style={{
-                    position: 'absolute',
-                    top: -17,
-                    left: -7
+                    position: 'relative',
+                    top: -37,
+                    left: -27,
+                    marginBottom: -39
                   }}>Возможности</Typography>
                   <List dense>
-                    <ListItem dense>
+                    <ListItem dense disableGutters>
                       <ListItemText primary='Имидж-консультирование клиентов, шопинг в России и Европе' />
                     </ListItem>
-                    <ListItem dense>
+                    <ListItem dense disableGutters>
                       <ListItemText primary='Стилизация фотосъемок (реклама, глянец), участие в ТВ проектах' />
                     </ListItem>
-                    <ListItem dense>
+                    <ListItem dense disableGutters>
                       <ListItemText primary='Коллаборации с дизайнерами (стилизация коллекций)' />
                     </ListItem>
-                    <ListItem dense>
+                    <ListItem dense disableGutters>
                       <ListItemText primary='Сотрудничество с бутиками и сетевыми магазинами' />
                     </ListItem>
-                    <ListItem dense>
+                    <ListItem dense disableGutters>
                       <ListItemText primary='Личный бренд, блог, networkihg и продвижение' />
                     </ListItem>
-                    <ListItem dense>
+                    <ListItem dense disableGutters>
                       <ListItemText primary='Свой бизнес в индустрии моды' />
                     </ListItem>
                   </List>
                 </>
               </VisibilitySensorSpring>
             </Grid>
-            <Grid item xs={10} sm={5} md={5} lg={5} style={{ position: 'relative', padding: 20 }}>
+            <Grid item xs={10} sm={6} md={6} lg={5} style={{ position: 'relative', padding: 20 }}>
               <VisibilitySensorSpring
                 backgroundOut={() => ({ 
                   transformOrigin: 'left',
@@ -207,10 +209,11 @@ export const ScreenFive = ({}) => {
               >
                 <>
                   <Typography component='h2' variant='h6' style={{
-                    position: 'absolute',
-                    top: -17,
-                    left: -7
-                  }}>В процессе обучения вас ждут</Typography>
+                    position: 'relative',
+                    top: -37,
+                    left: -27,
+                    marginBottom: -39
+                  }}>В процессе обучения<br />вас ждут</Typography>
                   <List dense>
                     <ListItem>
                       <ListItemText primary='Мастер-классы с приглашенными экспертами' />

@@ -10,7 +10,6 @@ import React, {useState} from 'react';
 
 import {LeftBlocks} from './imagemaker-left-blocks';
 import { ProgrammBlock } from './programm-block';
-import { Footer } from './footer';
 
 export const Imagemaker = ({ leftBlockRef, rightBlockRef }) => {
   const [value, setValue] = useState('course');
@@ -34,7 +33,7 @@ export const Imagemaker = ({ leftBlockRef, rightBlockRef }) => {
           <Tab label="Программа" value={'programm'} />
         </Tabs>
         {value == 'course' 
-        ? <LeftBlocks marginLeft={0} />
+        ? <LeftBlocks />
         : <Container>
           <ProgrammBlock />
         </Container> 
@@ -43,11 +42,13 @@ export const Imagemaker = ({ leftBlockRef, rightBlockRef }) => {
       <Hidden implementation='css' smDown>
         <Grid
           container
+          display='row'
           justify='center'
           alignItems='flex-start'
+          // spaicing={4}
         >
           <Grid item xs={7} ref={leftBlockRef}>
-            <LeftBlocks marginLeft={15}  />
+            <LeftBlocks />
           </Grid>
           <Grid item xs={5} ref={rightBlockRef}>
             <ProgrammBlock style={{
@@ -57,7 +58,6 @@ export const Imagemaker = ({ leftBlockRef, rightBlockRef }) => {
           </Grid>
         </Grid>
       </Hidden>
-      {/* <Footer paddingTop={100} /> */}
     </div>
   );
 }

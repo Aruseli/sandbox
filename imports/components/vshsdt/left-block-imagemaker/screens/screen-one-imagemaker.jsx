@@ -77,7 +77,7 @@ export const ScreenOne = ({}) => {
             // boxShadow: '0 5px 15px rgba(0, 0, 0, .1)',
           }}
         >
-        <Typography component='h2' variant='h6' align="center">11 месяцев / 120 занятий / Диплом</Typography>
+          <Typography component='h2' variant='h6' align="center">11 месяцев / 120 занятий / Диплом</Typography>
         </Text>
         <Text 
           left='40%' top='65%'

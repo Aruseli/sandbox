@@ -1,6 +1,6 @@
 import React, {useState, useContext, useRef} from 'react';
 
-import {Grid, makeStyles} from '@material-ui/core';
+import {Grid, makeStyles, Hidden} from '@material-ui/core';
 
 import {ArrowBackIos, ArrowForwardIos} from '@material-ui/icons';
 
@@ -61,7 +61,7 @@ export const Comments = ({}) => {
   
   const getTop = (ref) => ref.current ? ref.current.offsetTop + (ref.current.offsetHeight / 2) : 0;
 
-  const scrItem = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scrRef)) * 0.1) + 5}px)`);
+  const scrItem = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scrRef)) * 0.1)}px)`);
 
   const onPrevClick = () => {
     setIndex(index>0 ? index - 1 : comments.length - 1);
@@ -79,10 +79,11 @@ export const Comments = ({}) => {
       alignItems="center"
       style={{height: '100vh'}}
     >
-      <Grid item xs={10} sm={5} md={5} lg={5}
+      <Grid item xs={9} sm={5} md={5} lg={5}
         style={{
           position: 'relative',
-          height: '50%'
+          height: '50%',
+          // zIndex: 2
         }}
       >
         <div style={{
@@ -103,8 +104,8 @@ export const Comments = ({}) => {
               position: 'absolute',
               height: '70%',
               width: '70%',
-              left: i * 30,
-              zIndex: comments.length - i,
+              left: i * 20,
+              zIndex: (comments.length - i) + 10,
               transform: i > 1
                 ? 'perspective(100px) rotateY(-5deg) translateX(0px)'
                 : i == 0
@@ -121,57 +122,111 @@ export const Comments = ({}) => {
             </ChildrenResponsive>
           </div>
         })}
+        <Hidden smUp>
+          <div style={{
+            position: 'absolute',
+            right: -25,
+            top: 'calc(50% - 82px)',
+            zIndex: 99,
+          }}
+            onClick={onPrevClick}
+          >
+            <ArrowForwardIos />
+          </div>
+        </Hidden>
       </Grid>
-      <Grid item xs={10} sm={5} md={5} lg={5}
+      <Grid item xs={12} sm={5} md={5} lg={5}
         style={{
           position: 'relative',
           height: '50%'
         }}
       >
-        <div style={{
-          position: 'absolute',
-          right: -45,
-          top: 'calc(50% - 82px)',
-          zIndex: 99,
-        }}
-          onClick={onPrevClick}
-        >
-          <ArrowForwardIos />
-        </div>
+        <Hidden xsDown>
+          <div style={{
+            position: 'absolute',
+            right: -45,
+            top: 'calc(50% - 82px)',
+            zIndex: 99,
+          }}
+            onClick={onPrevClick}
+          >
+            <ArrowForwardIos />
+          </div>
+        </Hidden>
         {comments.map((value, ci) => {
           const i = calcRealIndex(comments, index, ci);
-          return <a.div 
-            key={value.id}
-            style={{
-              transform: scrItem,
-              position: 'absolute',
-              left: 20,
-              top: -70,
-              overflowY: 'scroll',
-              height: '100%',
-              width: '100%',
-              transition: 'left 1s ease, opacity 1s ease',
-              opacity: i != 1 ? 0 : 1,
-              border: '1px solid #ededed',
-              zIndex: 1,
-              background: 'rosybrown',
-              boxSizing: 'border-box',
-              padding: 30
-            }}
-          >
-            <Grid
-              container
-              justify="center"
-              alignItems="center"
-              style={{
-                minHeight: '100%'
-              }}
-            >
-              <Grid item>
-                {value.content}
-              </Grid>
-            </Grid>
-          </a.div>
+          return (
+            <>
+              <Hidden xsDown>
+                <a.div 
+                  key={value.id}
+                  style={{
+                    transform: scrItem,
+                    position: 'absolute',
+                    left: 20,
+                    top: -70,
+                    overflowY: 'scroll',
+                    height: '100%',
+                    width: '100%',
+                    transition: 'left 1s ease, opacity 1s ease',
+                    opacity: i != 1 ? 0 : 1,
+                    border: '1px solid #ededed',
+                    zIndex: 1,
+                    background: 'rosybrown',
+                    boxSizing: 'border-box',
+                    padding: 30
+                  }}
+                >
+                  <Grid
+                    container
+                    justify="center"
+                    alignItems="center"
+                    style={{
+                      minHeight: '100%'
+                    }}
+                  >
+                    <Grid item>
+                      {value.content}
+                    </Grid>
+                  </Grid>
+                </a.div>
+              </Hidden>
+              <Hidden smUp>
+                <div 
+                  key={value.id}
+                  style={{
+                    transform: scrItem,
+                    position: 'absolute',
+                    left: 0,
+                    top: -150,
+                    overflowY: 'scroll',
+                    height: '100%',
+                    width: '100%',
+                    transition: 'left 1s ease, opacity 1s ease',
+                    opacity: i != 1 ? 0 : 1,
+                    border: '1px solid #ededed',
+                    zIndex: 1,
+                    background: 'rosybrown',
+                    boxSizing: 'border-box',
+                    padding: 30
+                  }}
+                >
+                  <Grid
+                    container
+                    justify="center"
+                    alignItems="center"
+                    style={{
+                      minHeight: '100%'
+                    }}
+                  >
+                    <Grid item>
+                      {value.content}
+                    </Grid>
+                  </Grid>
+                </div>
+              </Hidden>
+            </>
+          )
         })}
       </Grid>
     </Grid>

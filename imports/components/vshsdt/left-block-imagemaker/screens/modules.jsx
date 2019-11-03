@@ -255,7 +255,7 @@ export const Modules = ({}) => {
                 })}
                 backgroundColor='rgb(204, 177, 186)'
                 visibilitySensorProps={{
-                  offset: { top: -100, bottom: -100 }
+                  offset: { top: -200, bottom: -200 }
                 }}
                 onVisibiltySensor={async ({
                   isVisible, setBackgroundStyle,

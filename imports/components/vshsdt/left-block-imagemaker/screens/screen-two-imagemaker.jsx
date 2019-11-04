@@ -46,7 +46,7 @@ export const ScreenTwo = ({}) => {
   return (<>
     <div ref={scr2Ref} className={classes.screen} 
         style={{
-          marginTop: 150
+          marginTop: 100
         }}>
       <Hidden xsDown implementation='css'>
         <Picture 
@@ -163,7 +163,7 @@ export const ScreenTwo = ({}) => {
           ] }
         />
         <Text 
-          left='66%' top='-10%'
+          left='66%' top='10%'
           width='250px' height='125px'
           WrapComponent={VisibilitySensorSpring}
           wrapComponentProps={{

@@ -19,6 +19,8 @@ export default () => {
     spx: 0, // scrollTop in px
     sh: 0,
     xys: [0, 0, 1],
+    translateY: 0,
+    rightIsMore: 0,
     config: { mass: 5, tension: 350, friction: 40 },
   }));
 
@@ -45,12 +47,30 @@ export default () => {
 
     input.rightIsMore = input.leftBlockHeight < input.rightBlockHeight;
 
-    
+    const vars = {
+      mh: input.rightIsMore ? input.rightBlockHeight : input.leftBlockHeight,
+      lh: input.rightIsMore ? input.leftBlockHeight : input.rightBlockHeight,
+      mt: input.rightBlockTop,
+      spx: e.target.scrollTop,
+      wh: input.scrollHeight,
+    }
+
+    vars.diffH = vars.mh - vars.lh;
+    vars.mb = vars.mh + vars.mt;
+    vars.spxT = vars.mt;
+    vars.spxB = vars.mb - vars.wh;
+    vars.spxT0 = vars.spxT - vars.mt;
+    vars.spxB0 = vars.spxB - vars.mt;
+    vars.spx0 = vars.spx - vars.mt;
+    vars.p = vars.spx0 * 100 / vars.spxB0;
+    vars.translateY = vars.diffH * vars.p / 100;
 
     return setSpring({
       s: e.target.scrollTop / (e.target.scrollHeight - e.target.clientHeight),
-      spx: e.target.scrollTop,
+      spx: vars.spx,
       sh: e.target.offsetHeight,
+      translateY: vars.spx < vars.spxT ? 0 : vars.spx > vars.spxB ? vars.diffH : vars.translateY,
+      rightIsMore: input.rightIsMore ? 1 : 0,
     });
   }, []);
   

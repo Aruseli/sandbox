@@ -23,7 +23,7 @@ export const Footer = ({ paddingTop, ...props }) => {
   return (<>
       <Hidden xsDown implementation='css'>
         <div style={{
-          backgroundColor: '#f7a22b',
+          backgroundColor: '#00000027',
           paddingTop: paddingTop,
           height: '70vh'
         }}>

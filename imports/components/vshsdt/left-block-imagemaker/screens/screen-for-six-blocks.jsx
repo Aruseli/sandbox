@@ -234,7 +234,139 @@ export const MobileFreeFourScreen = ({marginLeft}) => {
   const scrItem6 = interpolate([spx, sh], (spx, sh) => `translateY(${-((spx + sh / 2) - getTop(scrRef6)) * 0.1}px)`);
   
   return (<>
-    {/* <Hidden smDown> */}
+    <Hidden xsDown>
+      <Grid container justify="center" alignItems="center">
+        <Grid item sm={6} md={6} lg={6}>
+          <Grid
+            container
+            display="column"
+            justify="center"
+            alignItems="center"
+            spacing={4}>
+            <Grid item xs={10}
+              ref={scrRef1}
+            >
+              <a.div
+                style={{
+                  transform: scrItem1,
+                  backgroundColor: 'rgb(239, 195, 195)',
+                  boxSizing: 'border-box',
+                  padding: 20,
+                }}
+              >
+                <img src={fullProgramm} style={{
+                  width: 57,
+                  position: 'absolute',
+                  top: -37,
+                  left: -27
+                }} /> 
+                {content[0]}
+              </a.div>
+            </Grid>
+            <Grid item xs={10} ref={scrRef2}>
+              <a.div
+                style={{
+                  transform: scrItem2,
+                  backgroundColor: 'rgb(239, 195, 195)',
+                  boxSizing: 'border-box',
+                  padding: 20,
+                }}
+                >
+                <img src={specialization} style={{
+                  width: 57,
+                  position: 'absolute',
+                  top: -27,
+                  left: -27
+                }} />
+                {content[1]}
+              </a.div>
+            </Grid>
+            <Grid item xs={10} ref={scrRef3}>
+              <a.div
+                style={{
+                  transform: scrItem3,
+                  backgroundColor: 'rgb(239, 195, 195)',
+                  boxSizing: 'border-box',
+                  padding: 20,
+                }}
+                >
+                <img src={basic} style={{
+                  width: 57,
+                  position: 'absolute',
+                  top: -27,
+                  left: -27
+                }} />
+                {content[2]}
+              </a.div>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item sm={6} md={6} lg={6}>
+          <Grid
+            container
+            display="column"
+            justify="center"
+            alignItems="center"
+            spacing={4}>
+            <Grid item xs={10} ref={scrRef4}>
+              <a.div
+                style={{
+                  transform: scrItem4,
+                  backgroundColor: 'rgb(239, 195, 195)',
+                  boxSizing: 'border-box',
+                  padding: 20,
+                }}
+              >
+                <img src={freeLearning} style={{
+                  width: 57,
+                  position: 'absolute',
+                  top: -27,
+                  left: -27
+                }} />
+                {content[3]}
+              </a.div>
+            </Grid>
+            <Grid item xs={10} ref={scrRef5}>
+              <a.div
+                style={{
+                  transform: scrItem5,
+                  backgroundColor: 'rgb(239, 195, 195)',
+                  boxSizing: 'border-box',
+                  padding: 20,
+                }}
+              >
+                <img src={offline} style={{
+                  width: 57,
+                  position: 'absolute',
+                  top: -37,
+                  left: -27
+                }} />
+                {content[4]}
+              </a.div>
+            </Grid>
+            <Grid item xs={10} ref={scrRef6}>
+              <a.div
+                style={{
+                  transform: scrItem6,
+                  backgroundColor: 'rgb(239, 195, 195)',
+                  boxSizing: 'border-box',
+                  padding: 20,
+                }}
+              >
+                <img src={online} style={{
+                  width: 57,
+                  position: 'absolute',
+                  top: -37,
+                  left: -27
+                }} />
+                {content[5]}
+              </a.div>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Hidden>
+    <Hidden smUp>
       <Grid
         container
         display='column'
@@ -383,170 +515,8 @@ export const MobileFreeFourScreen = ({marginLeft}) => {
             {content[5]}
           </a.div>
         </Grid>
-      </Grid>
-    {/* </Hidden>
-    <Hidden mdUp>
-      <Grid
-        container
-        display='column'
-        justify='center'
-        alignItems='center'
-        spaicing={4}
-        style={{
-          marginTop: 150,
-          // marginLeft: 20,
-          // marginRight: 10,
-        }}
-      >
-        <Grid item md={11} lg={11}>
-          <Grid
-            container
-            justify='space-between'
-            alignItems='center'
-            spaicing={4}
-          >
-            <Grid item sm={5} md={5} lg={5} style={{ 
-              }} 
-              ref={scrRef1} >
-              <a.div
-                style={{
-                  transform: scrItem1,
-                  backgroundColor: 'rgb(239, 195, 195)',
-                  boxSizing: 'border-box',
-                  padding: 20,
-                }}
-              >
-                <img src={fullProgramm} style={{
-                  width: 57,
-                  position: 'absolute',
-                  top: -37,
-                  left: -27
-                  }} /> 
-                {content[0]}
-              </a.div>
-            </Grid>
-            <Grid item sm={5} md={5} lg={5} style={{ 
-              }} 
-              ref={scrRef2} >
-              <a.div
-                style={{
-                  transform: scrItem2,
-                  backgroundColor: 'rgb(239, 195, 195)',
-                  boxSizing: 'border-box',
-                  padding: 20,
-                }}
-                >
-                  <img src={specialization} style={{
-                    width: 57,
-                    position: 'absolute',
-                    top: -27,
-                    left: -27
-                  }} />
-                  {content[1]}
-              </a.div>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item md={11} lg={11}>
-          <Grid
-            container
-            justify='space-around'
-            alignItems='center'
-            spaicing={4}
-          >
-            <Grid item sm={5} md={5} lg={5} style={{ 
-              }} 
-              ref={scrRef4} >
-              <a.div
-                style={{
-                  transform: scrItem4,
-                  backgroundColor: 'rgb(239, 195, 195)',
-                  boxSizing: 'border-box',
-                  padding: 20,
-                }}
-              >
-                <img src={freeLearning} style={{
-                    width: 57,
-                    position: 'absolute',
-                    top: -27,
-                    left: -27
-                  }} />
-                {content[3]}
-              </a.div>
-            </Grid>
-            <Grid item sm={5} md={5} lg={5} style={{ 
-              }} 
-              ref={scrRef3} >
-              <a.div
-                style={{
-                  transform: scrItem3,
-                  backgroundColor: 'rgb(239, 195, 195)',
-                  boxSizing: 'border-box',
-                  padding: 20,
-                }}
-                >
-                 <img src={basic} style={{
-                    width: 57,
-                    position: 'absolute',
-                    top: -27,
-                    left: -27
-                  }} />
-                 {content[2]}
-              </a.div>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item md={11} lg={11}>
-          <Grid
-            container
-            justify='space-between'
-            alignItems='center'
-            spaicing={4}
-          >
-            <Grid item sm={5} md={5} lg={5} style={{ 
-              }} 
-              ref={scrRef5} >
-              <a.div
-                style={{
-                  transform: scrItem5,
-                  backgroundColor: 'rgb(239, 195, 195)',
-                  boxSizing: 'border-box',
-                  padding: 20,
-                }}
-              >
-                <img src={offline} style={{
-                    width: 57,
-                    position: 'absolute',
-                    top: -37,
-                    left: -27
-                  }} />
-                {content[4]}
-              </a.div>
-            </Grid>
-            <Grid item sm={5} md={5} lg={5} style={{ 
-              }} 
-              ref={scrRef6} >
-              <a.div
-                style={{
-                  transform: scrItem6,
-                  backgroundColor: 'rgb(239, 195, 195)',
-                  boxSizing: 'border-box',
-                  padding: 20,
-                }}
-              >
-                <img src={online} style={{
-                    width: 57,
-                    position: 'absolute',
-                    top: -37,
-                    left: -27
-                  }} />
-                {content[5]}
-              </a.div>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Hidden> */}
+      </Grid> 
+    </Hidden>
   </>);
 }
   

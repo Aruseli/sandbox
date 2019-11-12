@@ -29,7 +29,6 @@ import {
   const freeLearning = require('../../../../../images/comp.svg');
   const offline = require('../../../../../images/school.svg');
   const online = require('../../../../../images/online.svg');
-  const lg = require('../../../../../images/lg.svg');
   
   const content = [
     <>

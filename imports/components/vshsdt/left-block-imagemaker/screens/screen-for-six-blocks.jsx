@@ -29,6 +29,7 @@ import {
   const freeLearning = require('../../../../../images/comp.svg');
   const offline = require('../../../../../images/school.svg');
   const online = require('../../../../../images/online.svg');
+  const lg = require('../../../../../images/lg.svg');
   
   const content = [
     <>
@@ -272,12 +273,13 @@ export const MobileFreeFourScreen = ({marginLeft}) => {
                   padding: 20,
                 }}
                 >
-                <img src={specialization} style={{
-                  width: 57,
-                  position: 'absolute',
-                  top: -27,
-                  left: -27
-                }} />
+                <img src={specialization} 
+                  style={{
+                    width: 57,
+                    position: 'absolute',
+                    top: -27,
+                    left: -27
+                  }} />
                 {content[1]}
               </a.div>
             </Grid>

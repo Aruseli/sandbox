@@ -2,11 +2,10 @@ import {
   makeStyles,
   Grid,
   Typography,
-  List,
-  ListItem,
-  ListItemText,
   Hidden,
   } from '@material-ui/core';
+
+  import Link from 'next/link'
   
   import React from 'react';
   
@@ -62,19 +61,11 @@ import {
                     position: 'relative',
                     overflow: 'hidden'
                   }}>
-                    {/* <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: 310
-                    }}>
-                      <Typography variant='h4' component='h1'>
-                        Имиджмейкер. Второе высшее
-                      </Typography>
-                    </div> */}
-                    <img src={imagemaker} alt="имиджмейкер" style={{
-                    // width: '100%'
-                    }} />
+                    <Link href={'/imagemaker'}>
+                      <a>
+                        <img src={imagemaker} alt="имиджмейкер" />
+                      </a>
+                    </Link>
                   </div>
                 </Grid>
                 <Grid item xs={12} sm={3}>
@@ -84,16 +75,6 @@ import {
                     // position: 'relative',
                     overflow: 'hidden'
                   }}>
-                  {/* <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: 310
-                    }}>
-                      <Typography variant='h4' component='h1'>
-                        Дизайн интерьеров
-                      </Typography>
-                    </div> */}
                     <img src={course} alt="дизайн интерьеров" style={{
                     // width: '100%'
                   }} />
@@ -106,16 +87,6 @@ import {
                     position: 'relative',
                     overflow: 'hidden'
                   }}>
-                    {/* <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: 310
-                    }}>
-                      <Typography variant='h4' component='h1'>
-                        Партнерство
-                      </Typography>
-                    </div> */}
                     <img src={partners} alt="партнерство с сфере обучения" style={{
                       transform: 'translateY(-85px)'
                     }} />
@@ -128,16 +99,6 @@ import {
                     position: 'relative',
                     overflow: 'hidden'
                   }}>
-                    {/* <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: 310
-                    }}>
-                      <Typography variant='h4' component='h1'>
-                        Связь с нами
-                      </Typography>
-                    </div> */}
                     <img src={contacts} alt="контакты школы" style={{
                     // width: '100%'
                     }} />

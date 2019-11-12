@@ -39,14 +39,15 @@ export const ScreenTwo = ({}) => {
 
   const getTop = (ref) => ref.current ? ref.current.offsetTop + (ref.current.offsetHeight / 2) : 0;
 
-  const scr2item1 = interpolate([spx, sh], (spx, sh) => `translateY(${-((spx + sh / 2) - getTop(scr2Ref)) * 0.3}px)`);
-  const scr2item2 = interpolate([spx, sh], (spx, sh) => `translateY(${-((spx + sh / 2) - getTop(scr2Ref)) * 0.3}px)`);
-  const scr2item3 = interpolate([spx, sh], (spx, sh) => `translateY(${-((spx + sh / 2) - getTop(scr2Ref)) * 0.3}px)`);
+  const scr2item1 = interpolate([spx, sh], (spx, sh) => `translateY(${-((spx + sh / 2) - getTop(scr2Ref)) * 0.1}px)`);
+  const scr2item2 = interpolate([spx, sh], (spx, sh) => `translateY(${-((spx + sh / 2) - getTop(scr2Ref)) * 0.2}px)`);
+  const scr2item3 = interpolate([spx, sh], (spx, sh) => `translateY(${-((spx + sh / 2) - getTop(scr2Ref)) * 0.2}px)`);
 
   return (<>
     <div ref={scr2Ref} className={classes.screen} 
         style={{
-          marginTop: 100
+          marginTop: 70,
+          marginBottom: 70,
         }}>
       <Hidden xsDown implementation='css'>
         <Picture 

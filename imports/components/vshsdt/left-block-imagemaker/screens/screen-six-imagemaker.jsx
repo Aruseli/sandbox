@@ -5,11 +5,7 @@ import React from 'react';
 import {Comments} from '../../slider'; 
 
 const useStyle = makeStyles(() => ({
-  screen: {
-  position: 'relative',
-  width: '100%',
-  height: '70vh',
-  },
+  
 }));
 
 export const ScreenSix = ({}) => {

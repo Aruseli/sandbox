@@ -61,7 +61,7 @@ export const Comments = ({}) => {
   
   const getTop = (ref) => ref.current ? ref.current.offsetTop + (ref.current.offsetHeight / 2) : 0;
 
-  const scrItem = interpolate([spx, sh], (spx, sh) => `translateY(${-(((spx) - getTop(scrRef)) * 0.1)}px)`);
+  const scrItem = interpolate([spx, sh], (spx, sh) => `translateY(${-((spx + sh / 2) - getTop(scrRef)) * 0.1}px)`);
 
   const onPrevClick = () => {
     setIndex(index>0 ? index - 1 : comments.length - 1);
